@@ -31,15 +31,10 @@ html, body {
     direction: ltr;
 }
 
-.plus-badge {
-    background: #f1f0ff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    color: #6c63ff;
-    white-space: nowrap;
-
-    margin-left: 10px; /* 👈 هذا هو الحل */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* ☰ خطين */

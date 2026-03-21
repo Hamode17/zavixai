@@ -37,7 +37,7 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد (الحل الحقيقي) */
+/* 🔥 حل الكيبورد */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
@@ -52,37 +52,36 @@ function handleKeyboard() {
 
 handleKeyboard();
 
-/* ======================= */
-/* 🔥 الرسالة المؤقتة */
-/* ======================= */
+/* ========================= */
+/* 💬 الرسالة المؤقتة */
+/* ========================= */
 
-const chatBtn = document.getElementById("chatNotify");
+const tempBtn = document.getElementById("tempMsgBtn");
 
-chatBtn.addEventListener("click", () => {
+// تحقق إذا ظهرت سابقاً
+if (!localStorage.getItem("tempMessageShown")) {
 
-    // إذا ظهرت قبل لا تظهر مرة ثانية
-    if (localStorage.getItem("seenMessage")) return;
+    // عند الضغط
+    tempBtn.addEventListener("click", () => {
 
-    const popup = document.createElement("div");
-    popup.innerText = "🚀 قريباً سيتم إضافة نظام الرسائل";
+        // رسالة مؤقتة
+        const tempMsg = document.createElement("div");
+        tempMsg.className = "bot-msg";
+        tempMsg.innerText = "🔥 هذه رسالة مؤقتة! لن تظهر مرة أخرى.";
+        chatBox.appendChild(tempMsg);
 
-    popup.style.position = "fixed";
-    popup.style.top = "70px";
-    popup.style.right = "20px";
-    popup.style.background = "#111";
-    popup.style.color = "#fff";
-    popup.style.padding = "10px 15px";
-    popup.style.borderRadius = "10px";
-    popup.style.zIndex = "9999";
-    popup.style.fontSize = "14px";
+        scrollDown();
 
-    document.body.appendChild(popup);
+        // حفظ أنها ظهرت
+        localStorage.setItem("tempMessageShown", "true");
 
-    // تختفي بعد 3 ثواني
-    setTimeout(() => {
-        popup.remove();
-    }, 3000);
+        // تعطيل الزر
+        tempBtn.style.opacity = "0.4";
+        tempBtn.style.pointerEvents = "none";
+    });
 
-    // تخزين أنها ظهرت
-    localStorage.setItem("seenMessage", "true");
-});
+} else {
+    // إذا ظهرت سابقاً
+    tempBtn.style.opacity = "0.4";
+    tempBtn.style.pointerEvents = "none";
+}

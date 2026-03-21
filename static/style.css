@@ -107,32 +107,52 @@ input {
     cursor: pointer;
 }
 
-/* زر + */
+/* ========================= */
+/* 🔘 زر + */
+/* ========================= */
+
 .plus-btn {
     background: #f1f1f1;
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
 }
 
-/* زر المايك */
-.mic {
-    color: #555;
+/* ضغط */
+.plus-btn:active {
+    transform: scale(0.9);
 }
 
-/* زر الإرسال */
+/* ========================= */
+/* ✉️ زر الإرسال */
+/* ========================= */
+
 .send {
-    background: #ccc;
-    color: white;
+    background: #e5e5e5;
+    color: #666;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    transition: 0.3s;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
 }
 
-/* لما يكتب المستخدم */
+/* عند الكتابة */
 .send.active {
     background: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ضغط */
+.send:active {
+    transform: scale(0.9);
 }
 
 /* ========================= */
@@ -149,6 +169,17 @@ input {
     display: none;
     flex-direction: column;
     gap: 8px;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.25s ease;
+}
+
+/* عند الفتح */
+.plus-menu.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .plus-menu button {

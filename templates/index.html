@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Zavix AI</title>
 
@@ -11,30 +11,23 @@
 
 <body>
 
+<!-- 🔥 HEADER -->
 <header class="header">
-    <div class="left">☰ Zavix AI</div>
-    <div class="right">
-        <button class="plus">✨ Upgrade</button>
-    </div>
+    <button class="menu-btn">☰</button>
+    <div class="title">Zavix AI</div>
+    <button class="upgrade">✨</button>
 </header>
 
+<!-- 💬 CHAT -->
 <main id="chat-box" class="chat-box"></main>
 
-<div class="input-container">
-
-    <div class="plus-menu" id="plusMenu">
-        <button>📷 التقاط صورة</button>
-        <button>🖼️ رفع صورة</button>
-        <button>📄 رفع ملف</button>
-        <button>🎨 إنشاء صورة</button>
-    </div>
-
+<!-- 🔥 INPUT -->
+<div class="input-area">
     <div class="input-box">
-        <button class="send" id="sendBtn">↑</button>
+        <button id="plusBtn">＋</button>
         <input id="messageInput" placeholder="اسأل Zavix AI أي شيء...">
-        <button class="plus-btn" id="plusBtn">＋</button>
+        <button id="sendBtn">↑</button>
     </div>
-
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>

@@ -22,7 +22,7 @@ document.addEventListener("click", (e) => {
 });
 
 // =======================
-// زر الإرسال يتفعل
+// تفعيل زر الإرسال
 // =======================
 input.addEventListener("input", () => {
     if (input.value.trim() !== "") {
@@ -39,19 +39,16 @@ sendBtn.addEventListener("click", () => {
     const text = input.value.trim();
     if (!text) return;
 
-    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
-    // رد مؤقت
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "🤖 جاري التفكير...";
     chatBox.appendChild(botMsg);
 
-    // تمرير للأسفل
     chatBox.scrollTop = chatBox.scrollHeight;
 
     input.value = "";
@@ -59,24 +56,6 @@ sendBtn.addEventListener("click", () => {
 });
 
 // =======================
-// 🔥 حل مشكلة الكيبورد
+// ❌ لا نستخدم أي كود viewport
 // =======================
-window.addEventListener("resize", () => {
-    document.body.style.height = window.innerHeight + "px";
-});
-// 🔥 حل نهائي لمشكلة اختفاء الهيدر
-function fixViewport() {
-    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    document.body.style.height = vh + "px";
-}
-
-// أول تحميل
-fixViewport();
-
-// عند فتح الكيبورد
-if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", fixViewport);
-}
-
-// fallback
-window.addEventListener("resize", fixViewport);
+// (تم حذفه بالكامل لأنه سبب المشكلة)

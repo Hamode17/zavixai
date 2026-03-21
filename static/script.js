@@ -1,63 +1,47 @@
-const plusBtn = document.getElementById("plusBtn");
-const plusMenu = document.getElementById("plusMenu");
-const input = document.getElementById("messageInput");
+const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
-const chatBox = document.getElementById("chat-box");
+const chatBox = document.getElementById("chatBox");
 
-// =======================
-// زر +
-// =======================
-plusBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    plusMenu.classList.toggle("show");
+/* إرسال رسالة */
+
+sendBtn.onclick = sendMessage;
+input.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") sendMessage();
 });
 
-document.addEventListener("click", (e) => {
-    if (!plusBtn.contains(e.target) && !plusMenu.contains(e.target)) {
-        plusMenu.classList.remove("show");
-    }
-});
-
-// =======================
-// تفعيل زر الإرسال
-// =======================
-input.addEventListener("input", () => {
-    if (input.value.trim() !== "") {
-        sendBtn.classList.add("active");
-    } else {
-        sendBtn.classList.remove("active");
-    }
-});
-
-// =======================
-// إرسال رسالة
-// =======================
-sendBtn.addEventListener("click", () => {
+function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
+    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
+    input.value = "";
+
+    // رد وهمي
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "🤖 جاري التفكير...";
     chatBox.appendChild(botMsg);
 
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    input.value = "";
-    sendBtn.classList.remove("active");
-});
-
-// =======================
-// 🔥 الحل الحقيقي للكيبورد
-// =======================
-function fixHeight() {
-    document.documentElement.style.height = window.innerHeight + "px";
+    scrollDown();
 }
 
-window.addEventListener("resize", fixHeight);
-fixHeight();
+/* تمرير للأسفل */
+
+function scrollDown() {
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+/* 🔥 حل مشكلة الكيبورد */
+
+function fixKeyboard() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', fixKeyboard);
+fixKeyboard();

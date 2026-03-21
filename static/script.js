@@ -2,7 +2,7 @@ const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
 
-/* إرسال رسالة */
+/* إرسال */
 
 sendBtn.onclick = sendMessage;
 
@@ -14,7 +14,6 @@ function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
-    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
@@ -22,7 +21,6 @@ function sendMessage() {
 
     input.value = "";
 
-    // رد وهمي
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "جاري التفكير...";
@@ -31,13 +29,11 @@ function sendMessage() {
     scrollDown();
 }
 
-/* تمرير للأسفل */
-
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد */
+/* 🔥 الكيبورد */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
@@ -52,36 +48,27 @@ function handleKeyboard() {
 
 handleKeyboard();
 
-/* ========================= */
-/* 💬 الرسالة المؤقتة */
-/* ========================= */
+/* 💬 رسالة مؤقتة */
 
 const tempBtn = document.getElementById("tempMsgBtn");
 
-// تحقق إذا ظهرت سابقاً
 if (!localStorage.getItem("tempMessageShown")) {
 
-    // عند الضغط
     tempBtn.addEventListener("click", () => {
-
-        // رسالة مؤقتة
         const tempMsg = document.createElement("div");
         tempMsg.className = "bot-msg";
-        tempMsg.innerText = "🔥 هذه رسالة مؤقتة! لن تظهر مرة أخرى.";
+        tempMsg.innerText = "🔥 رسالة مؤقتة - لن تظهر مرة أخرى";
         chatBox.appendChild(tempMsg);
 
         scrollDown();
 
-        // حفظ أنها ظهرت
         localStorage.setItem("tempMessageShown", "true");
 
-        // تعطيل الزر
         tempBtn.style.opacity = "0.4";
         tempBtn.style.pointerEvents = "none";
     });
 
 } else {
-    // إذا ظهرت سابقاً
     tempBtn.style.opacity = "0.4";
     tempBtn.style.pointerEvents = "none";
 }

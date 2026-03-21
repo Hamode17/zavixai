@@ -1,56 +1,31 @@
-// =======================
-// عناصر
-// =======================
-const plusBtn = document.getElementById("plusBtn");
-const plusMenu = document.getElementById("plusMenu");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chat-box");
 
-// =======================
-// زر +
-// =======================
-plusBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    plusMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", (e) => {
-    if (!plusBtn.contains(e.target) && !plusMenu.contains(e.target)) {
-        plusMenu.classList.remove("show");
-    }
-});
-
-// =======================
-// زر الإرسال يتفعل
-// =======================
+// تفعيل زر الإرسال
 input.addEventListener("input", () => {
-    if (input.value.trim() !== "") {
-        sendBtn.classList.add("active");
-    } else {
-        sendBtn.classList.remove("active");
-    }
+    sendBtn.style.color = input.value.trim() ? "black" : "gray";
 });
 
-// =======================
 // إرسال رسالة
-// =======================
 sendBtn.addEventListener("click", () => {
     const text = input.value.trim();
     if (!text) return;
 
+    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
+    // رد
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "🤖 جاري التفكير...";
     chatBox.appendChild(botMsg);
 
+    // تمرير
     chatBox.scrollTop = chatBox.scrollHeight;
 
     input.value = "";
-    sendBtn.classList.remove("active");
 });

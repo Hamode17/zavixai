@@ -4,12 +4,9 @@
 const plusBtn = document.getElementById("plusBtn");
 const plusMenu = document.getElementById("plusMenu");
 
-plusBtn.addEventListener("click", () => {
-    if (plusMenu.style.display === "flex") {
-        plusMenu.style.display = "none";
-    } else {
-        plusMenu.style.display = "flex";
-    }
+plusBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    plusMenu.style.display = plusMenu.style.display === "flex" ? "none" : "flex";
 });
 
 // إغلاق القائمة عند الضغط خارجها
@@ -25,6 +22,7 @@ document.addEventListener("click", (e) => {
 // =======================
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
+const chatBox = document.getElementById("chat-box");
 
 input.addEventListener("input", () => {
     if (input.value.trim() !== "") {
@@ -36,14 +34,33 @@ input.addEventListener("input", () => {
 
 
 // =======================
-// زر الإرسال (تجريبي الآن)
+// إرسال الرسالة (محادثة حقيقية)
 // =======================
 sendBtn.addEventListener("click", () => {
-    if (input.value.trim() !== "") {
-        alert("تم إرسال الرسالة: " + input.value);
-        input.value = "";
-        sendBtn.classList.remove("active");
-    }
+    const text = input.value.trim();
+    if (text === "") return;
+
+    // رسالة المستخدم
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-msg";
+    userMsg.innerText = text;
+    chatBox.appendChild(userMsg);
+
+    // رد AI مؤقت
+    const botMsg = document.createElement("div");
+    botMsg.className = "bot-msg";
+    botMsg.innerText = "🤖 جاري التفكير...";
+    chatBox.appendChild(botMsg);
+
+    // سكرول تلقائي
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+
+    // تنظيف الحقل
+    input.value = "";
+    sendBtn.classList.remove("active");
 });
 
 

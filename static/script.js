@@ -84,3 +84,20 @@ function newChat() {
 function logout() {
     window.location.href = "/logout";
 }
+// =======================
+// 🔥 حل مشكلة اختفاء الهيدر (مهم جدا)
+// =======================
+
+window.addEventListener("resize", () => {
+    const header = document.querySelector(".header");
+
+    if (window.innerHeight < 500) {
+        // الكيبورد مفتوح
+        header.style.position = "fixed";
+        header.style.top = "0";
+        header.style.width = "100%";
+    } else {
+        // الوضع الطبيعي
+        header.style.position = "sticky";
+    }
+});

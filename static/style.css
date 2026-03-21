@@ -20,13 +20,70 @@ html, body {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px; /* 🔥 ترتيب العناصر */
 
     padding: 0 15px;
     background: white;
     border-bottom: 1px solid #e5e5e5;
 
     z-index: 1000;
+}
+
+/* زر الخطين */
+
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+/* الخط الطويل */
+
+.menu-btn span:first-child {
+    width: 22px;
+    height: 3px;
+    background: black;
+    border-radius: 5px;
+}
+
+/* الخط القصير */
+
+.menu-btn span:last-child {
+    width: 14px;
+    height: 3px;
+    background: black;
+    border-radius: 5px;
+}
+
+/* اسم الموقع */
+
+.header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* زر الاشتراك */
+
+.plus-header {
+    background: #f1f0ff;
+    color: #5b5bd6;
+
+    padding: 6px 10px;
+    border-radius: 20px;
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* زر الرسائل */
+
+.chat-btn {
+    margin-right: auto; /* 🔥 يخليه أقصى اليمين */
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /* 💬 CHAT */

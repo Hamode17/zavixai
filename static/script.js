@@ -2,6 +2,8 @@ const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
 
+/* إرسال رسالة */
+
 sendBtn.onclick = sendMessage;
 
 input.addEventListener("keypress", function(e) {
@@ -12,6 +14,7 @@ function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
+    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
@@ -19,6 +22,7 @@ function sendMessage() {
 
     input.value = "";
 
+    // رد وهمي
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "جاري التفكير...";
@@ -27,11 +31,13 @@ function sendMessage() {
     scrollDown();
 }
 
+/* تمرير للأسفل */
+
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* الكيبورد */
+/* 🔥 حل الكيبورد */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
@@ -45,26 +51,3 @@ function handleKeyboard() {
 }
 
 handleKeyboard();
-
-/* الرسالة المؤقتة */
-
-const tempBtn = document.getElementById("tempMsgBtn");
-
-if (!localStorage.getItem("tempMessageShown")) {
-    tempBtn.addEventListener("click", () => {
-        const tempMsg = document.createElement("div");
-        tempMsg.className = "bot-msg";
-        tempMsg.innerText = "🔥 رسالة مؤقتة - تظهر مرة واحدة فقط";
-        chatBox.appendChild(tempMsg);
-
-        scrollDown();
-
-        localStorage.setItem("tempMessageShown", "true");
-
-        tempBtn.style.opacity = "0.4";
-        tempBtn.style.pointerEvents = "none";
-    });
-} else {
-    tempBtn.style.opacity = "0.4";
-    tempBtn.style.pointerEvents = "none";
-}

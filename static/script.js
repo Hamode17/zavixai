@@ -1,18 +1,18 @@
 // =======================
-// زر + (فتح القائمة)
+// زر + (فتح القائمة بانيميشن)
 // =======================
 const plusBtn = document.getElementById("plusBtn");
 const plusMenu = document.getElementById("plusMenu");
 
 plusBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    plusMenu.style.display = plusMenu.style.display === "flex" ? "none" : "flex";
+    plusMenu.classList.toggle("show");
 });
 
 // إغلاق القائمة عند الضغط خارجها
 document.addEventListener("click", (e) => {
     if (!plusBtn.contains(e.target) && !plusMenu.contains(e.target)) {
-        plusMenu.style.display = "none";
+        plusMenu.classList.remove("show");
     }
 });
 

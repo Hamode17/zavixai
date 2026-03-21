@@ -1,4 +1,7 @@
-/* 🔥 إعداد عام */
+/* ========================= */
+/* 🌍 إعداد عام */
+/* ========================= */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -9,15 +12,24 @@ html, body {
     direction: rtl;
 }
 
-/* 🔥 التطبيق الكامل */
-.app {
-    height: 100dvh;
+/* ========================= */
+/* 🧱 Layout */
+/* ========================= */
+
+body {
     display: flex;
     flex-direction: column;
 }
 
-/* 🔥 HEADER ثابت */
+/* ========================= */
+/* 🔥 HEADER */
+/* ========================= */
+
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
     height: 60px;
     flex-shrink: 0;
 
@@ -30,12 +42,10 @@ html, body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-/* العنوان */
-.title {
-    font-weight: bold;
-}
+/* ========================= */
+/* 💬 CHAT */
+/* ========================= */
 
-/* 🔥 CHAT */
 .chat-box {
     flex: 1;
     overflow-y: auto;
@@ -46,6 +56,7 @@ html, body {
 }
 
 /* الرسائل */
+
 .user-msg {
     align-self: flex-end;
     background: black;
@@ -65,30 +76,34 @@ html, body {
     max-width: 70%;
 }
 
-/* 🔥 INPUT ثابت */
-.input-area {
+/* ========================= */
+/* 🧠 INPUT */
+/* ========================= */
+
+.input-container {
     flex-shrink: 0;
     padding: 10px;
     background: #f7f7f8;
 }
 
 /* صندوق الإدخال */
+
 .input-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    background: white;
-    border-radius: 30px;
-    padding: 10px;
-
+    width: 100%;
     max-width: 700px;
     margin: auto;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* الإدخال */
 .input-box input {
     flex: 1;
     border: none;
@@ -96,8 +111,47 @@ html, body {
 }
 
 /* الأزرار */
+
 .input-box button {
     border: none;
     background: none;
-    font-size: 18px;
+    cursor: pointer;
+}
+
+.plus-btn,
+.send {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.plus-btn {
+    background: #f1f1f1;
+}
+
+.send {
+    background: #e5e5e5;
+}
+
+.send.active {
+    background: black;
+    color: white;
+}
+
+/* القائمة */
+
+.plus-menu {
+    position: absolute;
+    bottom: 70px;
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.plus-menu.show {
+    display: flex;
 }

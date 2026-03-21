@@ -33,20 +33,43 @@ input {
     cursor: pointer;
 }
 
-/* CENTER */
-.center {
-    height: 80vh;
+/* ========================= */
+/* 💬 CHAT BOX */
+/* ========================= */
+
+.chat-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 120px;
 }
 
-.center h1 {
-    font-size: 26px;
-    text-align: center;
+/* رسالة المستخدم */
+.user-msg {
+    align-self: flex-end;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 10px;
+    max-width: 70%;
 }
 
-/* INPUT CONTAINER */
+/* رسالة الذكاء */
+.bot-msg {
+    align-self: flex-start;
+    background: #e5e5e5;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 10px;
+    max-width: 70%;
+}
+
+/* ========================= */
+/* INPUT */
+/* ========================= */
+
 .input-container {
     position: fixed;
     bottom: 10px;
@@ -112,7 +135,10 @@ input {
     background: black;
 }
 
+/* ========================= */
 /* قائمة زر + */
+/* ========================= */
+
 .plus-menu {
     position: absolute;
     bottom: 70px;

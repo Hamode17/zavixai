@@ -2,26 +2,27 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 🔥 هذا أهم تعديل -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <title>Zavix AI</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
+
 <body>
 
 <!-- HEADER -->
-<div class="header">
-    <div class="left">
-        ☰ Zavix AI
-    </div>
+<header class="header">
+    <div class="left">☰ Zavix AI</div>
     <div class="right">
         <button class="plus">✨ Upgrade</button>
     </div>
-</div>
+</header>
 
 <!-- 💬 CHAT -->
-<div id="chat-box" class="chat-box"></div>
+<main id="chat-box" class="chat-box"></main>
 
 <!-- INPUT -->
 <div class="input-container">
@@ -36,20 +37,18 @@
 
     <div class="input-box">
 
-        <!-- زر الإرسال (يمين) -->
+        <!-- زر الإرسال -->
         <button class="send" id="sendBtn">↑</button>
 
         <!-- الإدخال -->
         <input id="messageInput" placeholder="اسأل Zavix AI أي شيء...">
 
-        <!-- زر + (يسار) -->
+        <!-- زر + -->
         <button class="plus-btn" id="plusBtn">＋</button>
 
     </div>
-
 </div>
 
-<!-- JS -->
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>

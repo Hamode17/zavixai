@@ -12,14 +12,22 @@ html, body {
 }
 
 /* ========================= */
+/* 🧱 LAYOUT */
+/* ========================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================= */
 /* 🔥 HEADER ثابت */
 /* ========================= */
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
+    z-index: 1000;
 
     height: 60px;
     background: white;
@@ -30,7 +38,6 @@ html, body {
     justify-content: space-between;
 
     padding: 0 15px;
-    z-index: 1000;
 }
 
 /* ========================= */
@@ -38,14 +45,12 @@ html, body {
 /* ========================= */
 
 .chat-box {
-    position: fixed;
-    top: 60px;
-    bottom: 80px;
-    left: 0;
-    right: 0;
-
+    flex: 1;
     overflow-y: auto;
     padding: 15px;
+
+    margin-top: 60px;
+    margin-bottom: 80px;
 
     display: flex;
     flex-direction: column;
@@ -72,15 +77,12 @@ html, body {
 }
 
 /* ========================= */
-/* 🧠 INPUT ثابت */
+/* 🧠 INPUT */
 /* ========================= */
 
 .input-container {
-    position: fixed;
+    position: sticky;
     bottom: 0;
-    left: 0;
-    right: 0;
-
     padding: 10px;
     background: #f7f7f8;
 }
@@ -139,8 +141,8 @@ html, body {
 
 /* القائمة */
 .plus-menu {
-    position: fixed;
-    bottom: 90px;
+    position: absolute;
+    bottom: 70px;
     right: 20px;
 
     background: white;

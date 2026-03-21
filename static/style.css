@@ -5,6 +5,7 @@
 html, body {
     height: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body {
@@ -37,29 +38,29 @@ input {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.left {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.plus {
-    background: #f0f0ff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
+/* عشان ما يتخبى ورا الهيدر */
+body::before {
+    content: "";
+    display: block;
+    height: 70px;
 }
 
 /* ========================= */
-/* 💬 CHAT BOX */
+/* 💬 CHAT BOX (المهم 🔥🔥) */
 /* ========================= */
 
 .chat-box {
+    position: fixed;
+    top: 70px;
+    bottom: 90px;
+    right: 0;
+    left: 0;
+
+    overflow-y: auto;
+
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    padding-top: 80px; /* 👈 مهم للهيدر */
-    padding-bottom: 120px;
+    padding: 15px;
 }
 
 /* رسالة المستخدم */
@@ -85,15 +86,19 @@ input {
 }
 
 /* ========================= */
-/* INPUT */
+/* INPUT (ثابت 🔥) */
 /* ========================= */
 
 .input-container {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
+    right: 0;
     width: 100%;
     display: flex;
     justify-content: center;
+    background: #f7f7f8;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 /* صندوق الإدخال */
@@ -160,12 +165,14 @@ input {
     transition: 0.25s ease;
 }
 
+/* عند الكتابة */
 .send.active {
     background: black;
     color: white;
     transform: scale(1.05);
 }
 
+/* ضغط */
 .send:active {
     transform: scale(0.9);
 }

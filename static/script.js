@@ -51,3 +51,38 @@ function handleKeyboard() {
 }
 
 handleKeyboard();
+
+/* ======================= */
+/* 🔥 الرسالة المؤقتة */
+/* ======================= */
+
+const chatBtn = document.getElementById("chatNotify");
+
+chatBtn.addEventListener("click", () => {
+
+    // إذا ظهرت قبل لا تظهر مرة ثانية
+    if (localStorage.getItem("seenMessage")) return;
+
+    const popup = document.createElement("div");
+    popup.innerText = "🚀 قريباً سيتم إضافة نظام الرسائل";
+
+    popup.style.position = "fixed";
+    popup.style.top = "70px";
+    popup.style.right = "20px";
+    popup.style.background = "#111";
+    popup.style.color = "#fff";
+    popup.style.padding = "10px 15px";
+    popup.style.borderRadius = "10px";
+    popup.style.zIndex = "9999";
+    popup.style.fontSize = "14px";
+
+    document.body.appendChild(popup);
+
+    // تختفي بعد 3 ثواني
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+
+    // تخزين أنها ظهرت
+    localStorage.setItem("seenMessage", "true");
+});

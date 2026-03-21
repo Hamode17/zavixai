@@ -22,7 +22,7 @@ document.addEventListener("click", (e) => {
 });
 
 // =======================
-// تفعيل زر الإرسال
+// زر الإرسال يتفعل
 // =======================
 input.addEventListener("input", () => {
     if (input.value.trim() !== "") {
@@ -54,8 +54,3 @@ sendBtn.addEventListener("click", () => {
     input.value = "";
     sendBtn.classList.remove("active");
 });
-
-// =======================
-// ❌ لا نستخدم أي كود viewport
-// =======================
-// (تم حذفه بالكامل لأنه سبب المشكلة)

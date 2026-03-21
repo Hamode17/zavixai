@@ -6,20 +6,9 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden;
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
-}
-
-/* ========================= */
-/* 🧱 LAYOUT */
-/* ========================= */
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 /* ========================= */
@@ -27,20 +16,21 @@ body {
 /* ========================= */
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 9999;
+    left: 0;
+    right: 0;
 
     height: 60px;
-    flex-shrink: 0;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 0 15px;
-    background: white;
-    border-bottom: 1px solid #e5e5e5;
+    z-index: 1000;
 }
 
 /* ========================= */
@@ -48,7 +38,12 @@ body {
 /* ========================= */
 
 .chat-box {
-    flex: 1;
+    position: fixed;
+    top: 60px;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+
     overflow-y: auto;
     padding: 15px;
 
@@ -77,16 +72,20 @@ body {
 }
 
 /* ========================= */
-/* 🧠 INPUT */
+/* 🧠 INPUT ثابت */
 /* ========================= */
 
 .input-container {
-    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     padding: 10px;
     background: #f7f7f8;
 }
 
-/* صندوق */
+/* صندوق الإدخال */
 .input-box {
     width: 100%;
     max-width: 700px;
@@ -108,10 +107,9 @@ body {
     flex: 1;
     border: none;
     outline: none;
-    font-size: 16px; /* مهم للموبايل */
 }
 
-/* أزرار */
+/* الأزرار */
 .input-box button {
     border: none;
     background: none;
@@ -141,14 +139,18 @@ body {
 
 /* القائمة */
 .plus-menu {
-    position: absolute;
-    bottom: 70px;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+
     background: white;
     border-radius: 15px;
     padding: 10px;
+
     display: none;
     flex-direction: column;
     gap: 8px;
+
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 

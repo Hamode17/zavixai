@@ -1,18 +1,18 @@
 // =======================
-// زر + (فتح القائمة بانيميشن)
+// زر + (فتح القائمة)
 // =======================
 const plusBtn = document.getElementById("plusBtn");
 const plusMenu = document.getElementById("plusMenu");
 
 plusBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    plusMenu.classList.toggle("show");
+    plusMenu.style.display = plusMenu.style.display === "flex" ? "none" : "flex";
 });
 
 // إغلاق القائمة عند الضغط خارجها
 document.addEventListener("click", (e) => {
     if (!plusBtn.contains(e.target) && !plusMenu.contains(e.target)) {
-        plusMenu.classList.remove("show");
+        plusMenu.style.display = "none";
     }
 });
 
@@ -34,7 +34,7 @@ input.addEventListener("input", () => {
 
 
 // =======================
-// إرسال الرسالة (محادثة حقيقية)
+// إرسال الرسالة
 // =======================
 sendBtn.addEventListener("click", () => {
     const text = input.value.trim();
@@ -53,15 +53,42 @@ sendBtn.addEventListener("click", () => {
     chatBox.appendChild(botMsg);
 
     // سكرول تلقائي
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
+    chatBox.scrollTop = chatBox.scrollHeight;
 
     // تنظيف الحقل
     input.value = "";
     sendBtn.classList.remove("active");
 });
+
+
+// =======================
+// 🔥 الحل النهائي لمشكلة الهيدر + الكيبورد
+// =======================
+
+function fixHeaderOnKeyboard() {
+    const header = document.querySelector(".header");
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => {
+
+            const heightDiff = window.innerHeight - window.visualViewport.height;
+
+            if (heightDiff > 150) {
+                // الكيبورد مفتوح
+                header.style.position = "fixed";
+                header.style.top = "0";
+                header.style.width = "100%";
+                header.style.zIndex = "9999";
+            } else {
+                // الوضع الطبيعي
+                header.style.position = "sticky";
+            }
+
+        });
+    }
+}
+
+fixHeaderOnKeyboard();
 
 
 // =======================
@@ -84,20 +111,3 @@ function newChat() {
 function logout() {
     window.location.href = "/logout";
 }
-// =======================
-// 🔥 حل مشكلة اختفاء الهيدر (مهم جدا)
-// =======================
-
-window.addEventListener("resize", () => {
-    const header = document.querySelector(".header");
-
-    if (window.innerHeight < 500) {
-        // الكيبورد مفتوح
-        header.style.position = "fixed";
-        header.style.top = "0";
-        header.style.width = "100%";
-    } else {
-        // الوضع الطبيعي
-        header.style.position = "sticky";
-    }
-});

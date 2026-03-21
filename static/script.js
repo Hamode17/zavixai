@@ -1,59 +1,53 @@
-const chatBox = document.getElementById("chatBox");
-const input = document.getElementById("messageInput");
+const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
+const chatBox = document.getElementById("chatBox");
 
-// 🔽 النزول التلقائي
-function scrollToBottom() {
-    chatBox.scrollTo({
-        top: chatBox.scrollHeight,
-        behavior: "smooth"
-    });
-}
+/* إرسال رسالة */
 
-// ✉️ إرسال رسالة
+sendBtn.onclick = sendMessage;
+
+input.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") sendMessage();
+});
+
 function sendMessage() {
-    const message = input.value.trim();
-    if (message === "") return;
+    const text = input.value.trim();
+    if (!text) return;
 
     // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
-    userMsg.textContent = message;
-
+    userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
     input.value = "";
-    sendBtn.classList.remove("active");
 
-    scrollToBottom();
+    // رد وهمي
+    const botMsg = document.createElement("div");
+    botMsg.className = "bot-msg";
+    botMsg.innerText = "جاري التفكير...";
+    chatBox.appendChild(botMsg);
 
-    // رد البوت
-    setTimeout(() => {
-        const botMsg = document.createElement("div");
-        botMsg.className = "bot-msg";
-        botMsg.textContent = "جاري التفكير...";
-
-        chatBox.appendChild(botMsg);
-        scrollToBottom();
-
-    }, 600);
+    scrollDown();
 }
 
-// زر الإرسال
-sendBtn.addEventListener("click", sendMessage);
+/* تمرير للأسفل */
 
-// Enter للإرسال
-input.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        sendMessage();
-    }
-});
+function scrollDown() {
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-// تفعيل زر الإرسال عند الكتابة
-input.addEventListener("input", () => {
-    if (input.value.trim() !== "") {
-        sendBtn.classList.add("active");
-    } else {
-        sendBtn.classList.remove("active");
+/* 🔥 حل الكيبورد (الحل الحقيقي) */
+
+function handleKeyboard() {
+    const inputContainer = document.querySelector(".input-container");
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+            inputContainer.style.bottom = keyboardHeight + "px";
+        });
     }
-});
+}
+
+handleKeyboard();

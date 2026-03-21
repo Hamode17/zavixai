@@ -9,7 +9,7 @@ html, body {
     direction: rtl;
 }
 
-/* 🔥 HEADER ثابت */
+/* 🔥 HEADER */
 
 .header {
     position: fixed;
@@ -27,9 +27,11 @@ html, body {
     border-bottom: 1px solid #e5e5e5;
 
     z-index: 1000;
+
+    direction: ltr; /* 🔥 الحل */
 }
 
-/* تقسيم الهيدر */
+/* تقسيم */
 
 .header-left {
     display: flex;
@@ -43,7 +45,7 @@ html, body {
     gap: 10px;
 }
 
-/* 🔥 زر الخطين (مثل ChatGPT) */
+/* 🔥 زر الخطين */
 
 .menu-icon {
     display: flex;
@@ -67,14 +69,14 @@ html, body {
     width: 12px;
 }
 
-/* 🔥 اسم الموقع */
+/* الاسم */
 
 .logo {
     font-size: 18px;
     margin: 0;
 }
 
-/* 🔥 زر الاشتراك */
+/* زر الاشتراك */
 
 .plus-btn-header {
     background: #f1edff;
@@ -85,7 +87,7 @@ html, body {
     cursor: pointer;
 }
 
-/* 🔥 زر الرسالة المؤقتة */
+/* زر الرسالة */
 
 .temp-msg-btn {
     font-size: 18px;
@@ -140,8 +142,6 @@ html, body {
     z-index: 1000;
 }
 
-/* صندوق الإدخال */
-
 .input-box {
     width: 95%;
     margin: auto;
@@ -156,8 +156,6 @@ html, body {
 
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
-
-/* النص */
 
 .input-box input {
     flex: 1;

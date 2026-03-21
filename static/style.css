@@ -1,4 +1,12 @@
+/* ========================= */
 /* عام */
+/* ========================= */
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: Arial;
@@ -11,8 +19,17 @@ input {
     font-size: 16px;
 }
 
-/* HEADER */
+/* ========================= */
+/* HEADER (ثابت 🔥) */
+/* ========================= */
+
 .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+
     display: flex;
     justify-content: space-between;
     padding: 15px;
@@ -41,6 +58,7 @@ input {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    padding-top: 80px; /* 👈 مهم للهيدر */
     padding-bottom: 120px;
 }
 
@@ -122,7 +140,6 @@ input {
     transition: 0.25s ease;
 }
 
-/* ضغط */
 .plus-btn:active {
     transform: scale(0.9);
 }
@@ -143,14 +160,12 @@ input {
     transition: 0.25s ease;
 }
 
-/* عند الكتابة */
 .send.active {
     background: black;
     color: white;
     transform: scale(1.05);
 }
 
-/* ضغط */
 .send:active {
     transform: scale(0.9);
 }
@@ -175,7 +190,6 @@ input {
     transition: 0.25s ease;
 }
 
-/* عند الفتح */
 .plus-menu.show {
     display: flex;
     opacity: 1;

@@ -2,9 +2,9 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zavix AI</title>
 
-<!-- ✅ الربط الصحيح -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
@@ -27,13 +27,35 @@
 
 <!-- INPUT -->
 <div class="input-container">
-    <div class="input-box">
-        <span>＋</span>
-        <input placeholder="اسأل Zavix AI أي شيء...">
-        <button>🎤</button>
-        <button class="send">↑</button>
+
+    <!-- قائمة زر + -->
+    <div class="plus-menu" id="plusMenu">
+        <button>📷 التقاط صورة</button>
+        <button>🖼️ رفع صورة</button>
+        <button>📄 رفع ملف</button>
+        <button>🎨 إنشاء صورة</button>
     </div>
+
+    <div class="input-box">
+
+        <!-- زر + -->
+        <button class="plus-btn" id="plusBtn">＋</button>
+
+        <!-- الإدخال -->
+        <input id="messageInput" placeholder="اسأل Zavix AI أي شيء...">
+
+        <!-- زر مايك -->
+        <button class="mic">🎤</button>
+
+        <!-- زر الإرسال -->
+        <button class="send" id="sendBtn">↑</button>
+
+    </div>
+
 </div>
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

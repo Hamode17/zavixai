@@ -20,32 +20,25 @@ html, body {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
-    padding: 0 15px;
+    padding: 0 12px;
     background: white;
     border-bottom: 1px solid #e5e5e5;
 
     z-index: 1000;
 
-    direction: ltr; /* 🔥 الحل */
+    direction: ltr;
 }
 
-/* تقسيم */
+/* LEFT SIDE */
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px; /* مسافة مرتبة */
 }
 
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* 🔥 زر الخطين */
+/* زر الخطين */
 
 .menu-icon {
     display: flex;
@@ -72,8 +65,8 @@ html, body {
 /* الاسم */
 
 .logo {
-    font-size: 18px;
-    margin: 0;
+    font-size: 17px;
+    margin: 0 4px;
 }
 
 /* زر الاشتراك */
@@ -81,17 +74,39 @@ html, body {
 .plus-btn-header {
     background: #f1edff;
     color: #5f3dc4;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 18px;
+    font-size: 12px;
     cursor: pointer;
 }
 
-/* زر الرسالة */
+/* زر الرسائل */
 
 .temp-msg-btn {
-    font-size: 18px;
+    margin-left: 4px;
     cursor: pointer;
+}
+
+/* أيقونة الرسالة (شكل ChatGPT) */
+
+.msg-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px dashed black;
+    border-radius: 50%;
+    position: relative;
+}
+
+.msg-icon::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
+    border-left: 2px dashed black;
+    border-bottom: 2px dashed black;
+    transform: rotate(45deg);
 }
 
 /* 💬 CHAT */

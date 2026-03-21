@@ -64,3 +64,19 @@ sendBtn.addEventListener("click", () => {
 window.addEventListener("resize", () => {
     document.body.style.height = window.innerHeight + "px";
 });
+// 🔥 حل نهائي لمشكلة اختفاء الهيدر
+function fixViewport() {
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.body.style.height = vh + "px";
+}
+
+// أول تحميل
+fixViewport();
+
+// عند فتح الكيبورد
+if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", fixViewport);
+}
+
+// fallback
+window.addEventListener("resize", fixViewport);

@@ -2,8 +2,6 @@ const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
 
-/* إرسال */
-
 sendBtn.onclick = sendMessage;
 
 input.addEventListener("keypress", function(e) {
@@ -33,7 +31,7 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 الكيبورد */
+/* الكيبورد */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
@@ -48,16 +46,15 @@ function handleKeyboard() {
 
 handleKeyboard();
 
-/* 💬 رسالة مؤقتة */
+/* الرسالة المؤقتة */
 
 const tempBtn = document.getElementById("tempMsgBtn");
 
 if (!localStorage.getItem("tempMessageShown")) {
-
     tempBtn.addEventListener("click", () => {
         const tempMsg = document.createElement("div");
         tempMsg.className = "bot-msg";
-        tempMsg.innerText = "🔥 رسالة مؤقتة - لن تظهر مرة أخرى";
+        tempMsg.innerText = "🔥 رسالة مؤقتة - تظهر مرة واحدة فقط";
         chatBox.appendChild(tempMsg);
 
         scrollDown();
@@ -67,7 +64,6 @@ if (!localStorage.getItem("tempMessageShown")) {
         tempBtn.style.opacity = "0.4";
         tempBtn.style.pointerEvents = "none";
     });
-
 } else {
     tempBtn.style.opacity = "0.4";
     tempBtn.style.pointerEvents = "none";

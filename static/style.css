@@ -5,27 +5,32 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100dvh; /* 🔥 مهم جدا */
-    overflow: hidden;
+    height: 100%;
+    overflow-x: hidden;
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
 }
 
 /* ========================= */
-/* 🧱 LAYOUT كامل */
+/* 🧱 LAYOUT */
 /* ========================= */
 
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* ========================= */
-/* 🔥 HEADER */
+/* 🔥 HEADER ثابت */
 /* ========================= */
 
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
     height: 60px;
     flex-shrink: 0;
 
@@ -103,6 +108,7 @@ body {
     flex: 1;
     border: none;
     outline: none;
+    font-size: 16px; /* مهم للموبايل */
 }
 
 /* أزرار */

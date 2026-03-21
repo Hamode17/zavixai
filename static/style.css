@@ -1,7 +1,4 @@
-/* ========================= */
-/* 🌍 إعداد عام */
-/* ========================= */
-
+/* 🔥 إعداد عام */
 html, body {
     margin: 0;
     padding: 0;
@@ -11,52 +8,50 @@ html, body {
     direction: rtl;
 }
 
-/* ========================= */
-/* 🧱 LAYOUT */
-/* ========================= */
-
+/* 🔥 layout */
 body {
     display: flex;
     flex-direction: column;
+    height: 100dvh;
 }
 
-/* ========================= */
 /* 🔥 HEADER ثابت */
-/* ========================= */
-
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
-
+    right: 0;
+    left: 0;
     height: 60px;
-    background: white;
-    border-bottom: 1px solid #e5e5e5;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 0 15px;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 1000;
 }
 
-/* ========================= */
-/* 💬 CHAT */
-/* ========================= */
+/* العنوان */
+.title {
+    font-weight: bold;
+}
 
+/* 🔥 CHAT */
 .chat-box {
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px;
-
     margin-top: 60px;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 
+    overflow-y: auto;
+    flex: 1;
+
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
-/* رسائل */
+/* الرسائل */
 .user-msg {
     align-self: flex-end;
     background: black;
@@ -76,32 +71,31 @@ body {
     max-width: 70%;
 }
 
-/* ========================= */
-/* 🧠 INPUT */
-/* ========================= */
-
-.input-container {
-    position: sticky;
+/* 🔥 INPUT ثابت */
+.input-area {
+    position: fixed;
     bottom: 0;
+    right: 0;
+    left: 0;
+
     padding: 10px;
     background: #f7f7f8;
 }
 
 /* صندوق الإدخال */
 .input-box {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-
-    background: white;
-    border-radius: 30px;
-
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 12px;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    background: white;
+    border-radius: 30px;
+    padding: 10px;
+
+    max-width: 700px;
+    margin: auto;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* الإدخال */
@@ -115,47 +109,5 @@ body {
 .input-box button {
     border: none;
     background: none;
-    cursor: pointer;
-}
-
-/* زر + */
-.plus-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #f1f1f1;
-}
-
-/* إرسال */
-.send {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #e5e5e5;
-}
-
-.send.active {
-    background: black;
-    color: white;
-}
-
-/* القائمة */
-.plus-menu {
-    position: absolute;
-    bottom: 70px;
-    right: 20px;
-
-    background: white;
-    border-radius: 15px;
-    padding: 10px;
-
-    display: none;
-    flex-direction: column;
-    gap: 8px;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-}
-
-.plus-menu.show {
-    display: flex;
+    font-size: 18px;
 }

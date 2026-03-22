@@ -50,9 +50,10 @@ html, body {
 }
 
 .menu-icon span {
-    width: 20px;
-    height: 2px;
-    background: #555; /* نفس لونك الجديد */
+    width: 22px;         /* 👈 أطول شوي */
+    height: 3px;         /* 👈 سماكة أفضل */
+    background: #555;
+    border-radius: 999px; /* 👈 هذا السر 🔥 */
 }
 
 .menu-icon span:last-child {

@@ -42,12 +42,14 @@ html, body {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+
+    transform: translateY(-2px); /* رفع الأيقونة للأعلى */
 }
 
 .menu-icon span {
     width: 20px;
     height: 2px;
-    background: black;
+    background: #555; /* نفس لونك الجديد */
 }
 
 .menu-icon span:last-child {

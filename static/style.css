@@ -43,7 +43,7 @@ html, body {
     gap: 5px;
     cursor: pointer;
 
-    transform: translateX(-5px) translateY(-3px); /* 👈 فصل الحركة */
+    transform: translateX(-5px) translateY(-7px); /* 👈 فصل الحركة */
     margin-right: 25px; /* 👈 المسافة بين الخطوط والاسم */
 }
 

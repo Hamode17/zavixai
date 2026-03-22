@@ -59,7 +59,8 @@ html, body {
 .header h3 {
     margin: 0 15px;
     font-size: 18px;
-    
+    color: #2d2d2d;
+font-weight: 500;
 }
 
 /* ⭐ الاشتراك */

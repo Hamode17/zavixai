@@ -154,7 +154,9 @@ letter-spacing: 0.3px;
     width: 100%;
     padding: 10px;
     background: #f7f7f8;
-    z-index: 1000;
+    z-index: 9999;
+
+    touch-action: none; /* 👈 يمنع السحب */
 }
 
 .input-box {

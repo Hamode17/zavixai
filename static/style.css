@@ -81,7 +81,7 @@ letter-spacing: 0.3px;
     width: 15px;
     height: 15px;
 
-    border: 2px dashed #444;   /* لون أنعم من الأسود */
+    border: 2px dashed #666;   /* لون أنعم من الأسود */
     border-radius: 50%;
 
     margin-left: 30px;
@@ -102,8 +102,8 @@ letter-spacing: 0.3px;
     width: 7px;
     height: 7px;
 
-    border-left: 2px dashed #444;
-    border-bottom: 2px dashed #444;
+    border-left: 2px dashed #666;
+    border-bottom: 2px dashed #666;
 
     transform: rotate(45deg);
 }

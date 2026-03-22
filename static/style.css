@@ -44,7 +44,7 @@ html, body {
     cursor: pointer;
 
     transform: translate(-3px, -3px); /* 👈 تقديم للأمام + رفع للأعلى */
-    margin-right: 25px; /* 👈 المسافة بين الخطوط والاسم */
+    margin-right: 45px; /* 👈 المسافة بين الخطوط والاسم */
 }
 
 .menu-icon span {

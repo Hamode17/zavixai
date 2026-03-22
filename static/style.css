@@ -43,8 +43,8 @@ html, body {
     gap: 5px;
     cursor: pointer;
 
-    transform: translate(-5px, -3px); /* 👈 تقديم للأمام + رفع للأعلى */
-    margin-right: 15px; /* 👈 المسافة بين الخطوط والاسم */
+    transform: translate(-3px, -3px); /* 👈 تقديم للأمام + رفع للأعلى */
+    margin-right: 25px; /* 👈 المسافة بين الخطوط والاسم */
 }
 
 .menu-icon span {

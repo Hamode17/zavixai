@@ -44,7 +44,7 @@ html, body {
     cursor: pointer;
 
     position: relative; /* 👈 تضيفه هنا */
-    left: 15px;         /* 👈 وتتحكم من هنا */
+    left: 10px;         /* 👈 وتتحكم من هنا */
 
     transform: translateY(-3px);
 }

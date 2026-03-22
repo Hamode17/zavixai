@@ -44,10 +44,11 @@ html, body {
     cursor: pointer;
 
     transform: translateY(-3px); /* رفع الأيقونة للأعلى */
+    margin-right: 15px; /* 👈 المسافة بين الخطوط والاسم */
 }
 
 .menu-icon span {
-    width: 15px;
+    width: 20px;
     height: 2px;
     background: #555; /* نفس لونك الجديد */
 }

@@ -75,8 +75,8 @@ html, body {
 /* 🔥 زر الرسائل (شكل ChatGPT) */
 
 .temp-msg-btn {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
 
     border: 2px dashed #888;
     border-radius: 50%;

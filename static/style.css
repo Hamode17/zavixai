@@ -43,8 +43,10 @@ html, body {
     gap: 5px;
     cursor: pointer;
 
-    transform: translateX(-3px) translateY(-3px); /* 👈 فصل الحركة */
-    margin-right: 15px; /* 👈 المسافة بين الخطوط والاسم */
+    position: relative; /* 👈 تضيفه هنا */
+    left: 15px;         /* 👈 وتتحكم من هنا */
+
+    transform: translateY(-3px);
 }
 
 .menu-icon span {

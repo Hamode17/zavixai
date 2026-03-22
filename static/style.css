@@ -95,14 +95,15 @@ letter-spacing: 0.3px;
 .temp-msg-btn::after {
     content: "";
     position: absolute;
-    bottom: -5px;
-    left: 6px;
 
-    width: 8px;
-    height: 8px;
+    bottom: -4px;
+    left: 4px;
 
-    border-left: 2px dashed #888;
-    border-bottom: 2px dashed #888;
+    width: 7px;
+    height: 7px;
+
+    border-left: 2px dashed #444;
+    border-bottom: 2px dashed #444;
 
     transform: rotate(45deg);
 }

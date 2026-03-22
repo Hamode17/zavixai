@@ -43,7 +43,7 @@ html, body {
     gap: 5px;
     cursor: pointer;
 
-    transform: translateY(-3px); /* رفع الأيقونة للأعلى */
+    transform: translate(-3px, -3px); /* 👈 تقديم للأمام + رفع للأعلى */
     margin-right: 15px; /* 👈 المسافة بين الخطوط والاسم */
 }
 
@@ -56,7 +56,6 @@ html, body {
 .menu-icon span:last-child {
     width: 14px;
 }
-
 /* الاسم */
 
 .header h3 {

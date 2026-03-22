@@ -50,7 +50,7 @@ html, body {
 }
 
 .menu-icon span {
-    width: 22px;         /* 👈 أطول شوي */
+    width: 20px;         /* 👈 أطول شوي */
     height: 3px;         /* 👈 سماكة أفضل */
     background: #555;
     border-radius: 999px; /* 👈 هذا السر 🔥 */

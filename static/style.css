@@ -124,7 +124,7 @@ letter-spacing: 0.3px;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 
-    padding: 80px 15px 90px;
+    padding: 65px 12px 70px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

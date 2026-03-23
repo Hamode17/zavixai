@@ -117,14 +117,18 @@ letter-spacing: 0.3px;
 
 /* 💬 CHAT */
 .chat-box {
-    height: calc(100vh - 120px);
+    height: calc(100dvh - 120px);
     overflow-y: auto;
+    flex: 1;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
     padding: 80px 15px 90px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
-
 
 /* الرسائل */
 

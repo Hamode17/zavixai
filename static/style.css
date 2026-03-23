@@ -178,7 +178,7 @@ letter-spacing: 0.3px;
 }
 
 .input-box input {
-    flex: 16;
+    flex: 1;
     border: none;
     outline: none;
     font-size: 12px;

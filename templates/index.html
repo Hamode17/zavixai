@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <title>Zavix AI</title>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -49,6 +53,14 @@
 </div>
 
 <script src="/static/script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("Service Worker Registered"))
+    .catch((err) => console.log("SW Error:", err));
+}
+</script>
 
 </body>
 </html>

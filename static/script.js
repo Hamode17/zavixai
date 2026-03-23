@@ -52,29 +52,3 @@ function handleKeyboard() {
 
 handleKeyboard();
 
-window.addEventListener("load", () => {
-
-  const input = document.querySelector(".input-container");
-
-  function updateInputPosition() {
-    if (!window.visualViewport) return;
-
-    const viewport = window.visualViewport;
-
-    // ✅ حساب ارتفاع الكيبورد بشكل صحيح
-    const keyboardHeight = window.innerHeight - (viewport.height + viewport.offsetTop);
-
-    if (keyboardHeight > 0) {
-      input.style.bottom = keyboardHeight + "px";
-    } else {
-      input.style.bottom = "0px";
-    }
-  }
-
-  // 🔥 عند فتح / غلق الكيبورد
-  window.visualViewport.addEventListener("resize", updateInputPosition);
-
-  // 🔥 احتياط لبعض الأجهزة
-  window.visualViewport.addEventListener("scroll", updateInputPosition);
-
-});

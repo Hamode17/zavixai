@@ -51,3 +51,12 @@ function handleKeyboard() {
 }
 
 handleKeyboard();
+window.addEventListener("resize", () => {
+    const input = document.querySelector(".input-container");
+
+    if (window.visualViewport) {
+        const keyboardHeight = window.innerHeight - window.visualViewport.height;
+
+        input.style.bottom = keyboardHeight > 0 ? keyboardHeight + "px" : "0px";
+    }
+});

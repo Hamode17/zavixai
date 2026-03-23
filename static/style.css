@@ -7,6 +7,8 @@ html, body {
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
+   overflow: hidden; 
+    
 }
 
 /* 🔥 HEADER */
@@ -114,15 +116,15 @@ letter-spacing: 0.3px;
 }
 
 /* 💬 CHAT */
-
 .chat-box {
-    height: 100vh;
+    height: calc(100vh - 120px);
     overflow-y: auto;
     padding: 80px 15px 90px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
+
 
 /* الرسائل */
 

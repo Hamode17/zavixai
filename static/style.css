@@ -7,7 +7,8 @@ html, body {
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
-    overflow: hidden;
+   overflow: hidden; 
+    
 }
 
 /* 🔥 HEADER */
@@ -44,31 +45,30 @@ html, body {
     gap: 5px;
     cursor: pointer;
 
-    position: relative;
-    left: 5px;
+    position: relative; /* 👈 تضيفه هنا */
+    left: 5px;         /* 👈 وتتحكم من هنا */
 
     transform: translateY(-3px);
 }
 
 .menu-icon span {
-    width: 21px;
-    height: 2px;
+    width: 21px;         /* 👈 أطول شوي */
+    height: 2px;         /* 👈 سماكة أفضل */
     background: #555;
-    border-radius: 999px;
+    border-radius: 999px; /* 👈 هذا السر 🔥 */
 }
 
 .menu-icon span:last-child {
     width: 14px;
 }
-
 /* الاسم */
 
 .header h3 {
     margin: 16px;
     font-size: 18px;
     color: #2d2d2d;
-    font-weight: 500;
-    letter-spacing: 0.3px;   
+font-weight: 500;
+letter-spacing: 0.3px;   
 }
 
 /* ⭐ الاشتراك */
@@ -82,13 +82,13 @@ html, body {
     margin-left:10px;
 }
 
-/* 🔥 زر الرسائل */
+/* 🔥 زر الرسائل (شكل ChatGPT) */
 
 .temp-msg-btn {
     width: 15px;
     height: 15px;
 
-    border: 2px dashed #555;
+    border: 2px dashed #555;   /* لون أنعم من الأسود */
     border-radius: 50%;
 
     margin-left: 35px;
@@ -96,6 +96,8 @@ html, body {
     position: relative;
     cursor: pointer;
 }
+
+/* الذيل (أسفل الدائرة) */
 
 .temp-msg-btn::after {
     content: "";
@@ -117,16 +119,12 @@ html, body {
 .chat-box {
     height: calc(100vh - 120px);
     overflow-y: auto;
-
-    /* 👇 هذا أهم تعديل 🔥 */
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-
     padding: 80px 15px 90px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
+
 
 /* الرسائل */
 
@@ -160,7 +158,7 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
-    /* ❌ حذفنا touch-action لأنه كان يسبب المشكلة */
+    touch-action: none; /* 👈 يمنع السحب */
 }
 
 .input-box {

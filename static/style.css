@@ -152,8 +152,7 @@ letter-spacing: 0.3px;
 }
 
 /* 🧠 INPUT */
-
-input-container {
+.input-container {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -164,6 +163,7 @@ input-container {
 
     touch-action: none; /* 👈 يمنع السحب */
 }
+
 
 .input-box {
     width: 95%;

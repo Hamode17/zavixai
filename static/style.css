@@ -162,7 +162,9 @@ letter-spacing: 0.3px;
     background: #f7f7f8;
     z-index: 9999;
 
-    touch-action: none; /* 👈 يمنع السحب */
+    /* ✅ تحسين الحركة */
+    will-change: transform;
+    transition: bottom 0.2s ease;
 }
 
 .input-box {

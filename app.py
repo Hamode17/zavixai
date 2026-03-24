@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, redirect, jsonify, send_from_directory
 import sqlite3
 import os
 
@@ -21,7 +21,7 @@ def init_db():
         conn.commit()
         conn.close()
 
-# 👇 ننفذها أول طلب فقط (مو عند تشغيل السيرفر)
+# 👇 ننفذها أول طلب فقط
 @app.before_request
 def before_request():
     init_db()
@@ -71,8 +71,15 @@ def ask():
     return jsonify({"response": f"🤖: {message}"})
 
 # =========================
-# ✅ هذا هو التعديل الوحيد المهم
+# ✅ تشغيل manifest.json
 # =========================
-@app.route('/sw.js')
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('.', 'manifest.json')
+
+# =========================
+# ✅ تشغيل Service Worker من static
+# =========================
+@app.route('/static/sw.js')
 def service_worker():
-    return app.send_static_file('sw.js')
+    return send_from_directory('static', 'sw.js')

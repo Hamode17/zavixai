@@ -217,3 +217,17 @@ html, body {
     background: black;
     color: white;
 }
+
+/* 🔥 منع تحريك الصفحة بالكامل */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* 🔥 التمرير فقط داخل الشات */
+.chat-box {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}

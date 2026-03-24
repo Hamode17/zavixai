@@ -49,11 +49,22 @@
     <div class="bot-msg">👋 مرحباً! كيف أساعدك؟</div>
 </div>
 
+<!-- 🔥 input وهمي لمنع اقتراحات الكيبورد -->
+<input type="text" style="position:absolute; top:-9999px; opacity:0;">
+
 <!-- INPUT -->
 <div class="input-container">
     <div class="input-box">
         <button class="plus-btn">+</button>
-        <input id="userInput" type="text" placeholder="اسأل Zavix AI أي شيء...">
+
+        <!-- 🔥 استبدلنا input بـ div مثل ChatGPT -->
+        <div 
+          id="userInput" 
+          contenteditable="true"
+          class="editable-input"
+          data-placeholder="اسأل Zavix AI أي شيء..."
+        ></div>
+
         <button id="sendBtn" class="send">↑</button>
     </div>
 </div>
@@ -62,7 +73,7 @@
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/static/sw.js?v=999") // 🔥 إجبار تحديث
+  navigator.serviceWorker.register("/static/sw.js?v=999")
     .then(() => console.log("Service Worker Registered"))
     .catch((err) => console.log("SW Error:", err));
 }

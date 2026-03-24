@@ -1,9 +1,12 @@
-const CACHE_NAME = "zavix-cache-v1";
+const CACHE_NAME = "zavix-cache-v2"; // غيرنا الإصدار مهم جداً
 
 const urlsToCache = [
   "/",
   "/static/style.css",
-  "/static/script.js"
+  "/static/script.js",
+  "/manifest.json",
+  "/static/icon192.png",
+  "/static/icon512.png"
 ];
 
 self.addEventListener("install", (event) => {

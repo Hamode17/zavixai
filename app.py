@@ -69,3 +69,10 @@ def ask():
     data = request.get_json()
     message = data.get('message')
     return jsonify({"response": f"🤖: {message}"})
+
+# =========================
+# ✅ هذا هو التعديل الوحيد المهم
+# =========================
+@app.route('/sw.js')
+def service_worker():
+    return app.send_static_file('sw.js')

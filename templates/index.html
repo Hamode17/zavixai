@@ -10,6 +10,12 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" href="/static/style.css">
+
+<!-- 🔥 منع الكاش القديم -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 </head>
 
 <body>
@@ -56,7 +62,7 @@
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/static/sw.js")
+  navigator.serviceWorker.register("/static/sw.js?v=999") // 🔥 إجبار تحديث
     .then(() => console.log("Service Worker Registered"))
     .catch((err) => console.log("SW Error:", err));
 }

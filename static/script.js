@@ -6,12 +6,15 @@ const chatBox = document.getElementById("chatBox");
 
 sendBtn.onclick = sendMessage;
 
-input.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") sendMessage();
+input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault(); // 🔥 يمنع النزول سطر
+        sendMessage();
+    }
 });
 
 function sendMessage() {
-    const text = input.value.trim();
+    const text = input.innerText.trim(); // 🔥 بدل value
     if (!text) return;
 
     // رسالة المستخدم
@@ -20,7 +23,7 @@ function sendMessage() {
     userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
-    input.value = "";
+    input.innerText = ""; // 🔥 تفريغ
 
     // رد وهمي
     const botMsg = document.createElement("div");

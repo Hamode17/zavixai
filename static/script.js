@@ -54,3 +54,18 @@ function handleKeyboard() {
 }
 
 handleKeyboard();
+const inputContainer = document.querySelector(".input-container");
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+        const keyboardHeight = window.innerHeight - window.visualViewport.height;
+
+        if (keyboardHeight > 150) {
+            // 🔥 الكيبورد مفتوح
+            inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
+        } else {
+            // 🔥 الكيبورد مغلق
+            inputContainer.style.transform = "translateY(0)";
+        }
+    });
+}

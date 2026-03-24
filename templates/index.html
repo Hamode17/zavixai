@@ -16,6 +16,14 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
+<!-- 🔥 مهم جدًا: يمنع تحرك الصفحة عند الضغط -->
+<style>
+body {
+  position: fixed;
+  width: 100%;
+}
+</style>
+
 </head>
 
 <body>
@@ -57,7 +65,7 @@
     <div class="input-box">
         <button class="plus-btn">+</button>
 
-        <!-- 🔥 استبدلنا input بـ div مثل ChatGPT -->
+        <!-- 🔥 contenteditable -->
         <div 
           id="userInput" 
           contenteditable="true"

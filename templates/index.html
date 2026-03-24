@@ -31,7 +31,7 @@
         <!-- ⭐ الاشتراك -->
         <div class="plus-badge">⭐ Plus Sign up</div>
 
-        <!-- 🔥 الرسائل المؤقتة (مكان جديد) -->
+        <!-- 🔥 الرسائل المؤقتة -->
         <div class="temp-msg-btn"></div>
 
     </div>
@@ -56,7 +56,7 @@
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js")
+  navigator.serviceWorker.register("/static/sw.js")
     .then(() => console.log("Service Worker Registered"))
     .catch((err) => console.log("SW Error:", err));
 }

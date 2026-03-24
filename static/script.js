@@ -8,13 +8,13 @@ sendBtn.onclick = sendMessage;
 
 input.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
-        e.preventDefault(); // 🔥 يمنع النزول سطر
+        e.preventDefault();
         sendMessage();
     }
 });
 
 function sendMessage() {
-    const text = input.innerText.trim(); // 🔥 بدل value
+    const text = input.innerText.trim();
     if (!text) return;
 
     // رسالة المستخدم
@@ -23,7 +23,7 @@ function sendMessage() {
     userMsg.innerText = text;
     chatBox.appendChild(userMsg);
 
-    input.innerText = ""; // 🔥 تفريغ
+    input.innerText = "";
 
     // رد وهمي
     const botMsg = document.createElement("div");
@@ -40,15 +40,29 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد */
+/* 🔥 حل الكيبورد (احترافي وثابت) */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
 
+    let lastHeight = window.innerHeight;
+
     if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", () => {
-            const keyboardHeight = window.innerHeight - window.visualViewport.height;
-            inputContainer.style.bottom = keyboardHeight + "px";
+
+            const currentHeight = window.visualViewport.height;
+            const keyboardHeight = window.innerHeight - currentHeight;
+
+            // 🔥 فقط عند فتح الكيبورد
+            if (keyboardHeight > 120 && currentHeight < lastHeight) {
+                inputContainer.style.bottom = keyboardHeight + "px";
+            } 
+            // 🔥 عند إغلاق الكيبورد
+            else if (keyboardHeight < 50) {
+                inputContainer.style.bottom = "0px";
+            }
+
+            lastHeight = currentHeight;
         });
     }
 }

@@ -43,4 +43,14 @@ function scrollDown() {
 /* 🔥 حل الكيبورد */
 
 function handleKeyboard() {
-    
+    const inputContainer = document.querySelector(".input-container");
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+            inputContainer.style.bottom = keyboardHeight + "px";
+        });
+    }
+}
+
+handleKeyboard();

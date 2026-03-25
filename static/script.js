@@ -1,7 +1,6 @@
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
-const inputContainer = document.querySelector(".input-container");
 
 /* إرسال رسالة */
 
@@ -41,24 +40,38 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 تحسين الكيبورد فقط (بدون تخريب المتصفح) */
+/* 🔥 حل الكيبورد (ثابت ومحسّن) */
 
 function handleKeyboard() {
+    const inputContainer = document.querySelector(".input-container");
 
-    if (!window.visualViewport) return;
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-    window.visualViewport.addEventListener("resize", () => {
-
-        const keyboardHeight =
-            window.innerHeight - window.visualViewport.height;
-
-        if (keyboardHeight > 100) {
-            inputContainer.style.bottom = keyboardHeight + "px";
-        } else {
-            inputContainer.style.bottom = "0px";
-        }
-
-    });
+            if (keyboardHeight > 100) {
+                inputContainer.style.bottom = keyboardHeight + "px";
+            } else {
+                inputContainer.style.bottom = "0px";
+            }
+        });
+    }
 }
 
 handleKeyboard();
+
+/* 🔥🔥 الحل الحقيقي لمنع تحرك الأيقونة */
+
+const inputContainer = document.querySelector(".input-container");
+
+// ❌ منع سحب الأيقونة نفسها
+inputContainer.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+}, { passive: false });
+
+// ❌ منع تحريك الصفحة لما تكتب
+document.addEventListener("touchmove", function(e) {
+    if (document.activeElement === input) {
+        e.preventDefault();
+    }
+}, { passive: false });

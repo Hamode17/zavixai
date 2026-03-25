@@ -40,31 +40,38 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد (احترافي وثابت) */
+/* 🔥 حل الكيبورد (ثابت ومحسّن) */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
 
-    let lastHeight = window.innerHeight;
-
     if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-            const currentHeight = window.visualViewport.height;
-            const keyboardHeight = window.innerHeight - currentHeight;
-
-            // 🔥 فقط عند فتح الكيبورد
-            if (keyboardHeight > 120 && currentHeight < lastHeight) {
+            if (keyboardHeight > 100) {
                 inputContainer.style.bottom = keyboardHeight + "px";
-            } 
-            // 🔥 عند إغلاق الكيبورد
-            else if (keyboardHeight < 50) {
+            } else {
                 inputContainer.style.bottom = "0px";
             }
-
-            lastHeight = currentHeight;
         });
     }
 }
 
 handleKeyboard();
+
+/* 🔥🔥 الحل الحقيقي لمنع تحرك الأيقونة */
+
+const inputContainer = document.querySelector(".input-container");
+
+// ❌ منع سحب الأيقونة نفسها
+inputContainer.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+}, { passive: false });
+
+// ❌ منع تحريك الصفحة لما تكتب
+document.addEventListener("touchmove", function(e) {
+    if (document.activeElement === input) {
+        e.preventDefault();
+    }
+}, { passive: false });

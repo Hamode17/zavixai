@@ -40,38 +40,42 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد (ثابت ومحسّن) */
+/* 🔥 حل الكيبورد (احترافي + يدعم الزوم) */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
 
     if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", () => {
-            const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-            if (keyboardHeight > 100) {
+            const viewportHeight = window.visualViewport.height;
+            const keyboardHeight = window.innerHeight - viewportHeight;
+
+            // 👇 فقط إذا الكيبورد مفتوح
+            if (keyboardHeight > 120) {
                 inputContainer.style.bottom = keyboardHeight + "px";
             } else {
                 inputContainer.style.bottom = "0px";
             }
+
         });
     }
 }
 
 handleKeyboard();
 
-/* 🔥🔥 الحل الحقيقي لمنع تحرك الأيقونة */
+/* 🔥 الحل النهائي لمنع تحرك الأيقونة */
 
+/* ❌ نمنع سحب الأيقونة نفسها فقط */
 const inputContainer = document.querySelector(".input-container");
 
-// ❌ منع سحب الأيقونة نفسها
 inputContainer.addEventListener("touchmove", function(e) {
-    e.preventDefault();
-}, { passive: false });
+    e.stopPropagation(); // 👈 مهم بدل preventDefault
+}, { passive: true });
 
-// ❌ منع تحريك الصفحة لما تكتب
+/* ❌ منع سحب الصفحة فقط أثناء الكتابة */
 document.addEventListener("touchmove", function(e) {
     if (document.activeElement === input) {
-        e.preventDefault();
+        e.stopPropagation(); // 👈 الحل الصحيح
     }
-}, { passive: false });
+}, { passive: true });

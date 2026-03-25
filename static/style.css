@@ -235,3 +235,19 @@ html, body {
     touch-action: none;
 }
 
+/* 🔥 إعداد الزوم والسكرول بشكل صحيح */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 🔥 تثبيت الأيقونة بشكل احترافي */
+.input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    transform: translateY(0); /* مهم */
+    will-change: transform;
+}

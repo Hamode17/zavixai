@@ -235,15 +235,3 @@ html, body {
     touch-action: none;
 }
 
-html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-/* تثبيت الأيقونة */
-.input-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}

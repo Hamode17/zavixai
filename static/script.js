@@ -33,13 +33,13 @@ function sendMessage() {
     scrollDown();
 }
 
-/* سكرول */
+/* تمرير */
 
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 الحل النهائي (ChatGPT Style) */
+/* 🔥 حل الكيبورد + الزوم النهائي */
 
 function handleKeyboard() {
 
@@ -47,7 +47,8 @@ function handleKeyboard() {
 
         window.visualViewport.addEventListener("resize", () => {
 
-            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+            const keyboardHeight =
+                window.innerHeight - window.visualViewport.height;
 
             if (keyboardHeight > 150) {
                 inputContainer.style.bottom = keyboardHeight + "px";
@@ -56,10 +57,13 @@ function handleKeyboard() {
             }
         });
 
-        // ✅ مهم جدًا: يخلي الأيقونة تنزل مع الزوم
         window.visualViewport.addEventListener("scroll", () => {
+
+            const offset = window.visualViewport.offsetTop;
+
+            // 🔥 لا تخليها تصعد أكثر من اللازم
             inputContainer.style.transform =
-                `translateY(${window.visualViewport.offsetTop}px)`;
+                `translateY(${Math.min(offset, 50)}px)`;
         });
     }
 }

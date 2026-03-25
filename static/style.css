@@ -7,7 +7,9 @@ html, body {
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
-    overflow: hidden; 
+
+    overflow-x: hidden;
+    overflow-y: auto; /* ✅ السماح بالسكرول والزوم */
 }
 
 /* 🔥 HEADER */
@@ -68,7 +70,6 @@ html, body {
     font-size: 18px;
     color: #2d2d2d;
     font-weight: 500;
-    letter-spacing: 0.3px;   
 }
 
 /* ⭐ الاشتراك */
@@ -87,12 +88,9 @@ html, body {
 .temp-msg-btn {
     width: 15px;
     height: 15px;
-
     border: 2px dashed #555;
     border-radius: 50%;
-
     margin-left: 35px;
-
     position: relative;
     cursor: pointer;
 }
@@ -100,16 +98,12 @@ html, body {
 .temp-msg-btn::after {
     content: "";
     position: absolute;
-
     bottom: -4px;
     left: 4px;
-
     width: 7px;
     height: 7px;
-
     border-left: 2px dashed #555;
     border-bottom: 2px dashed #555;
-
     transform: rotate(45deg);
 }
 
@@ -118,12 +112,10 @@ html, body {
 .chat-box {
     height: calc(100dvh - 120px);
     overflow-y: auto;
-    flex: 1;
 
-    overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 
-    padding: 65px 12px 70px;
+    padding: 65px 12px 80px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -161,7 +153,8 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
-    touch-action: none;
+    /* ✅ مهم: لا نمنع التفاعل */
+    touch-action: auto;
 }
 
 .input-box {
@@ -176,7 +169,7 @@ html, body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* 🔥 الجديد (بدل input) */
+/* 🔥 editable */
 
 .editable-input {
     flex: 1;
@@ -188,7 +181,7 @@ html, body {
     font-size: 14px;
 }
 
-/* placeholder وهمي */
+/* placeholder */
 
 .editable-input:empty:before {
     content: attr(data-placeholder);
@@ -216,21 +209,4 @@ html, body {
 .send.active {
     background: black;
     color: white;
-}
-
-/* 🔥 منع تحريك الصفحة بالكامل */
-html, body {
-    overscroll-behavior: none;
-    touch-action: none;
-}
-
-/* 🔥 السماح بالسحب داخل الشات فقط */
-.chat-box {
-    overflow-y: auto;
-    touch-action: pan-y;
-}
-
-/* 🔥 تثبيت input ومنع سحبه */
-.input-container {
-    touch-action: none;
 }

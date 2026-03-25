@@ -1,7 +1,6 @@
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
-const inputContainer = document.querySelector(".input-container");
 
 /* إرسال */
 
@@ -36,26 +35,3 @@ function sendMessage() {
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-
-/* 🔥 الحل الحقيقي (نفس ChatGPT) */
-
-function setupViewportFix() {
-
-    if (!window.visualViewport) return;
-
-    function update() {
-        const vv = window.visualViewport;
-
-        const keyboardHeight = window.innerHeight - vv.height;
-
-        // ✅ فقط نحرك للأسفل
-        inputContainer.style.bottom = keyboardHeight + "px";
-    }
-
-    window.visualViewport.addEventListener("resize", update);
-    window.visualViewport.addEventListener("scroll", update);
-
-    update();
-}
-
-setupViewportFix();

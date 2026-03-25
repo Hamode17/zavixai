@@ -235,22 +235,15 @@ html, body {
     touch-action: none;
 }
 
-/* 🔥 تفعيل الزوم بدون مشاكل */
 html, body {
-    touch-action: manipulation;
-    overscroll-behavior: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* 🔥 تثبيت الأيقونة بشكل احترافي */
+/* تثبيت الأيقونة */
 .input-container {
-    position: fixed !important;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-
-    transform: translateZ(0); /* يمنع الاهتزاز */
-    will-change: transform;
-
-    transition: bottom 0.2s ease;
 }
-

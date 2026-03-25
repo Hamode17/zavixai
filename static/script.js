@@ -40,28 +40,38 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 الحل الصحيح للكيبورد + الزوم */
+/* 🔥 حل الكيبورد (ثابت ومحسّن) */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
 
     if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-            const viewportHeight = window.visualViewport.height;
-            const keyboardHeight = window.innerHeight - viewportHeight;
-
-            // 👇 نحرك باستخدام transform بدل bottom (مهم جدًا)
-            if (keyboardHeight > 120) {
-                inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
+            if (keyboardHeight > 100) {
+                inputContainer.style.bottom = keyboardHeight + "px";
             } else {
-                inputContainer.style.transform = "translateY(0)";
+                inputContainer.style.bottom = "0px";
             }
-
         });
     }
 }
 
 handleKeyboard();
 
-/* ❌ حذفنا كل أكواد المنع (لأنها تكسر الزوم) */
+/* 🔥🔥 الحل الحقيقي لمنع تحرك الأيقونة */
+
+const inputContainer = document.querySelector(".input-container");
+
+// ❌ منع سحب الأيقونة نفسها
+inputContainer.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+}, { passive: false });
+
+// ❌ منع تحريك الصفحة لما تكتب
+document.addEventListener("touchmove", function(e) {
+    if (document.activeElement === input) {
+        e.preventDefault();
+    }
+}, { passive: false });

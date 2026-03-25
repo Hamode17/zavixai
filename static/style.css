@@ -218,3 +218,20 @@ html, body {
     color: white;
 }
 
+/* 🔥 منع تحريك الصفحة بالكامل */
+html, body {
+    overscroll-behavior: none;
+    touch-action: none;
+}
+
+/* 🔥 السماح بالسحب داخل الشات فقط */
+.chat-box {
+    overflow-y: auto;
+    touch-action: pan-y;
+}
+
+/* 🔥 تثبيت input ومنع سحبه */
+.input-container {
+    touch-action: none;
+}
+

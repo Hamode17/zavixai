@@ -1,6 +1,7 @@
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
+const inputContainer = document.querySelector(".input-container");
 
 /* إرسال رسالة */
 
@@ -40,31 +41,24 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد (احترافي وثابت) */
+/* 🔥 تحسين الكيبورد فقط (بدون تخريب المتصفح) */
 
 function handleKeyboard() {
-    const inputContainer = document.querySelector(".input-container");
 
-    let lastHeight = window.innerHeight;
+    if (!window.visualViewport) return;
 
-    if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", () => {
+    window.visualViewport.addEventListener("resize", () => {
 
-            const currentHeight = window.visualViewport.height;
-            const keyboardHeight = window.innerHeight - currentHeight;
+        const keyboardHeight =
+            window.innerHeight - window.visualViewport.height;
 
-            // 🔥 فقط عند فتح الكيبورد
-            if (keyboardHeight > 120 && currentHeight < lastHeight) {
-                inputContainer.style.bottom = keyboardHeight + "px";
-            } 
-            // 🔥 عند إغلاق الكيبورد
-            else if (keyboardHeight < 50) {
-                inputContainer.style.bottom = "0px";
-            }
+        if (keyboardHeight > 100) {
+            inputContainer.style.bottom = keyboardHeight + "px";
+        } else {
+            inputContainer.style.bottom = "0px";
+        }
 
-            lastHeight = currentHeight;
-        });
-    }
+    });
 }
 
 handleKeyboard();

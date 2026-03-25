@@ -7,7 +7,9 @@ html, body {
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
-    overflow: hidden; 
+
+    overflow-x: hidden;
+    overflow-y: auto; /* 🔥 يسمح بالزوم */
 }
 
 /* 🔥 HEADER */
@@ -120,7 +122,6 @@ html, body {
     overflow-y: auto;
     flex: 1;
 
-    overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 
     padding: 65px 12px 70px;
@@ -161,7 +162,7 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
-    touch-action: none;
+    touch-action: auto; /* 🔥 مهم */
 }
 
 .input-box {
@@ -176,7 +177,7 @@ html, body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* 🔥 الجديد (بدل input) */
+/* 🔥 editable input */
 
 .editable-input {
     flex: 1;
@@ -188,7 +189,7 @@ html, body {
     font-size: 14px;
 }
 
-/* placeholder وهمي */
+/* placeholder */
 
 .editable-input:empty:before {
     content: attr(data-placeholder);
@@ -216,21 +217,4 @@ html, body {
 .send.active {
     background: black;
     color: white;
-}
-
-/* 🔥 منع تحريك الصفحة بالكامل */
-html, body {
-    overscroll-behavior: none;
-    touch-action: none;
-}
-
-/* 🔥 السماح بالسحب داخل الشات فقط */
-.chat-box {
-    overflow-y: auto;
-    touch-action: pan-y;
-}
-
-/* 🔥 تثبيت input ومنع سحبه */
-.input-container {
-    touch-action: none;
 }

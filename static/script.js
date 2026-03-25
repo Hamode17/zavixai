@@ -1,8 +1,9 @@
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
+const inputContainer = document.querySelector(".input-container");
 
-/* إرسال رسالة */
+/* إرسال */
 
 sendBtn.onclick = sendMessage;
 
@@ -17,7 +18,6 @@ function sendMessage() {
     const text = input.innerText.trim();
     if (!text) return;
 
-    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
@@ -25,7 +25,6 @@ function sendMessage() {
 
     input.innerText = "";
 
-    // رد وهمي
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "جاري التفكير...";
@@ -34,44 +33,35 @@ function sendMessage() {
     scrollDown();
 }
 
-/* تمرير للأسفل */
+/* سكرول */
 
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد (ثابت ومحسّن) */
+/* 🔥 الحل النهائي (ChatGPT Style) */
 
 function handleKeyboard() {
-    const inputContainer = document.querySelector(".input-container");
 
     if (window.visualViewport) {
+
         window.visualViewport.addEventListener("resize", () => {
+
             const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-            if (keyboardHeight > 100) {
+            if (keyboardHeight > 150) {
                 inputContainer.style.bottom = keyboardHeight + "px";
             } else {
                 inputContainer.style.bottom = "0px";
             }
         });
+
+        // ✅ مهم جدًا: يخلي الأيقونة تنزل مع الزوم
+        window.visualViewport.addEventListener("scroll", () => {
+            inputContainer.style.transform =
+                `translateY(${window.visualViewport.offsetTop}px)`;
+        });
     }
 }
 
 handleKeyboard();
-
-/* 🔥🔥 الحل الحقيقي لمنع تحرك الأيقونة */
-
-const inputContainer = document.querySelector(".input-container");
-
-// ❌ منع سحب الأيقونة نفسها
-inputContainer.addEventListener("touchmove", function(e) {
-    e.preventDefault();
-}, { passive: false });
-
-// ❌ منع تحريك الصفحة لما تكتب
-document.addEventListener("touchmove", function(e) {
-    if (document.activeElement === input) {
-        e.preventDefault();
-    }
-}, { passive: false });

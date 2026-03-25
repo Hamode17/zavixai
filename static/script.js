@@ -33,39 +33,29 @@ function sendMessage() {
     scrollDown();
 }
 
-/* تمرير */
-
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 حل الكيبورد + الزوم النهائي */
+/* 🔥 الحل الحقيقي (نفس ChatGPT) */
 
-function handleKeyboard() {
+function setupViewportFix() {
 
-    if (window.visualViewport) {
+    if (!window.visualViewport) return;
 
-        window.visualViewport.addEventListener("resize", () => {
+    function update() {
+        const vv = window.visualViewport;
 
-            const keyboardHeight =
-                window.innerHeight - window.visualViewport.height;
+        const keyboardHeight = window.innerHeight - vv.height;
 
-            if (keyboardHeight > 150) {
-                inputContainer.style.bottom = keyboardHeight + "px";
-            } else {
-                inputContainer.style.bottom = "0px";
-            }
-        });
-
-        window.visualViewport.addEventListener("scroll", () => {
-
-            const offset = window.visualViewport.offsetTop;
-
-            // 🔥 لا تخليها تصعد أكثر من اللازم
-            inputContainer.style.transform =
-                `translateY(${Math.min(offset, 50)}px)`;
-        });
+        // ✅ فقط نحرك للأسفل
+        inputContainer.style.bottom = keyboardHeight + "px";
     }
+
+    window.visualViewport.addEventListener("resize", update);
+    window.visualViewport.addEventListener("scroll", update);
+
+    update();
 }
 
-handleKeyboard();
+setupViewportFix();

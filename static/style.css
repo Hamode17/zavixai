@@ -9,7 +9,7 @@ html, body {
     direction: rtl;
 
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto; /* ✅ الزوم شغال */
 }
 
 /* 🔥 HEADER */
@@ -45,10 +45,8 @@ html, body {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-
     position: relative;
     left: 5px;
-
     transform: translateY(-3px);
 }
 
@@ -83,41 +81,14 @@ html, body {
     margin-left:10px;
 }
 
-/* 🔥 زر الرسائل */
-
-.temp-msg-btn {
-    width: 15px;
-    height: 15px;
-    border: 2px dashed #555;
-    border-radius: 50%;
-    margin-left: 35px;
-    position: relative;
-    cursor: pointer;
-}
-
-.temp-msg-btn::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 4px;
-    width: 7px;
-    height: 7px;
-    border-left: 2px dashed #555;
-    border-bottom: 2px dashed #555;
-    transform: rotate(45deg);
-}
-
 /* 💬 CHAT */
 
 .chat-box {
-    position: relative;
-
-    height: calc(100dvh - 120px);
+    height: calc(100dvh - 60px);
     overflow-y: auto;
-
     -webkit-overflow-scrolling: touch;
 
-    padding: 80px 12px 100px;
+    padding: 70px 12px 140px; /* 🔥 مهم */
     box-sizing: border-box;
 
     display: flex;
@@ -157,8 +128,6 @@ html, body {
     background: #f7f7f8;
 
     z-index: 9999;
-
-    touch-action: manipulation;
 }
 
 .input-box {

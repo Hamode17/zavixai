@@ -220,9 +220,8 @@ html, body {
     color: white;
 }
 /* 🔥 تثبيت الأيقونة مثل ChatGPT */
-
 .input-container {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     width: 100%;

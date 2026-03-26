@@ -2,7 +2,9 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- 🔥 أهم تعديل -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 
 <title>Zavix AI</title>
 
@@ -11,33 +13,39 @@
 
 <link rel="stylesheet" href="/static/style.css">
 
-<!-- 🔥 منع الكاش القديم -->
+<!-- 🔥 منع الكاش -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
+<!-- 🔥 مهم للكيبورد مثل ChatGPT -->
+<style>
+    html, body {
+        height: 100%;
+    }
+</style>
+
 </head>
 
 <body>
+
+<!-- 🔥 غلاف كامل مثل ChatGPT -->
+<div class="app">
 
 <!-- HEADER -->
 <div class="header">
 
     <div class="header-left">
         
-        <!-- ☰ -->
         <div class="menu-icon">
             <span></span>
             <span></span>
         </div>
 
-        <!-- الاسم -->
         <h3>Zavix AI</h3>
 
-        <!-- ⭐ الاشتراك -->
         <div class="plus-badge">⭐ Plus Sign up</div>
 
-        <!-- 🔥 الرسائل المؤقتة -->
         <div class="temp-msg-btn"></div>
 
     </div>
@@ -49,7 +57,7 @@
     <div class="bot-msg">👋 مرحباً! كيف أساعدك؟</div>
 </div>
 
-<!-- 🔥 input وهمي لمنع اقتراحات الكيبورد -->
+<!-- 🔥 input وهمي -->
 <input type="text" style="position:absolute; top:-9999px; opacity:0;">
 
 <!-- INPUT -->
@@ -57,7 +65,6 @@
     <div class="input-box">
         <button class="plus-btn">+</button>
 
-        <!-- 🔥 استبدلنا input بـ div مثل ChatGPT -->
         <div 
           id="userInput" 
           contenteditable="true"
@@ -68,6 +75,8 @@
         <button id="sendBtn" class="send">↑</button>
     </div>
 </div>
+
+</div> <!-- نهاية app -->
 
 <script src="/static/script.js"></script>
 

@@ -42,46 +42,33 @@ function scrollDown() {
     }, 50);
 }
 
-/* 🔥 حل الكيبورد (نفس أسلوب ChatGPT) */
+/* 🔥 فقط كيبورد بدون تخريب */
 
 function handleKeyboard() {
     const inputContainer = document.querySelector(".input-container");
 
     if (!window.visualViewport) return;
 
-    function updatePosition() {
-        const viewportHeight = window.visualViewport.height;
-        const windowHeight = window.innerHeight;
+    window.visualViewport.addEventListener("resize", () => {
+        const keyboardHeight =
+            window.innerHeight - window.visualViewport.height;
 
-        const keyboardHeight = windowHeight - viewportHeight;
-
-        // إذا الكيبورد مفتوح
         if (keyboardHeight > 100) {
-            inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
+            inputContainer.style.bottom = keyboardHeight + "px";
         } else {
-            inputContainer.style.transform = "translateY(0)";
+            inputContainer.style.bottom = "0px";
         }
-    }
-
-    window.visualViewport.addEventListener("resize", updatePosition);
-    window.visualViewport.addEventListener("scroll", updatePosition);
+    });
 }
 
 handleKeyboard();
 
-/* 🔥 تحسين تجربة الكتابة */
+/* زر الإرسال */
 
 input.addEventListener("input", () => {
-    // تفعيل زر الإرسال
     if (input.innerText.trim().length > 0) {
         sendBtn.classList.add("active");
     } else {
         sendBtn.classList.remove("active");
     }
-});
-
-/* 🔥 منع مشاكل التركيز */
-
-input.addEventListener("focus", () => {
-    setTimeout(scrollDown, 300);
 });

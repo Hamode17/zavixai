@@ -8,8 +8,16 @@ html, body {
     background: #f7f7f8;
     direction: rtl;
 
-    /* 🔥 تثبيت الصفحة */
-    overflow: hidden;
+    /* 🔥 مهم: نسمح للمتصفح يتحكم */
+    overflow: auto;
+}
+
+/* 🔥 APP WRAPPER */
+
+.app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* 🔥 HEADER */
@@ -118,13 +126,18 @@ html, body {
 /* 💬 CHAT */
 
 .chat-box {
-    height: calc(100dvh - 120px);
+    position: fixed;
+    top: 60px;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+
     overflow-y: auto;
 
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 
-    padding: 65px 12px 70px;
+    padding: 10px 12px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -162,6 +175,7 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
+    /* 🔥 أهم تعديل */
     touch-action: auto;
 }
 

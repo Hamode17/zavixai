@@ -8,8 +8,8 @@ html, body {
     background: #f7f7f8;
     direction: rtl;
 
-    /* 🔥 مهم: السماح للزوم والسحب */
-    overflow: auto;
+    /* 🔥 تثبيت الصفحة */
+    overflow: hidden;
 }
 
 /* 🔥 HEADER */
@@ -162,7 +162,6 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
-    /* 🔥 مهم: السماح للمتصفح بالتحكم */
     touch-action: auto;
 }
 

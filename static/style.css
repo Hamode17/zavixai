@@ -219,21 +219,3 @@ html, body {
     background: black;
     color: white;
 }
-/* 🔥 تثبيت الأيقونة مثل ChatGPT */
-.input-container {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-
-    z-index: 9999;
-
-    /* 🔥 هذا هو السر */
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-/* 🔥 يمنع اهتزاز الأيقونة */
-.input-box {
-    transform: translateZ(0);
-}

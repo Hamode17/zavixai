@@ -1,7 +1,6 @@
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
-const inputContainer = document.querySelector(".input-container");
 
 /* إرسال رسالة */
 
@@ -38,41 +37,51 @@ function sendMessage() {
 /* تمرير للأسفل */
 
 function scrollDown() {
-    chatBox.scrollTop = chatBox.scrollHeight;
+    setTimeout(() => {
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 50);
 }
 
-/* 🔥 نظام ChatGPT الحقيقي */
+/* 🔥 حل الكيبورد (نفس أسلوب ChatGPT) */
 
-function handleViewport() {
-
-    let lastHeight = window.innerHeight;
+function handleKeyboard() {
+    const inputContainer = document.querySelector(".input-container");
 
     if (!window.visualViewport) return;
 
-    window.visualViewport.addEventListener("resize", () => {
+    function updatePosition() {
+        const viewportHeight = window.visualViewport.height;
+        const windowHeight = window.innerHeight;
 
-        const currentHeight = window.visualViewport.height;
-        const keyboardHeight = window.innerHeight - currentHeight;
-        const isZoomed = window.visualViewport.scale > 1;
+        const keyboardHeight = windowHeight - viewportHeight;
 
-        if (isZoomed) {
-            // 🟡 وضع الزوم → المتصفح يتحكم
-            inputContainer.style.position = "absolute";
-            inputContainer.style.bottom = "0px";
+        // إذا الكيبورد مفتوح
+        if (keyboardHeight > 100) {
+            inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
-            // 🟢 الوضع الطبيعي → تثبيت + كيبورد
-            inputContainer.style.position = "fixed";
-
-            if (keyboardHeight > 120 && currentHeight < lastHeight) {
-                inputContainer.style.bottom = keyboardHeight + "px";
-            } else if (keyboardHeight < 50) {
-                inputContainer.style.bottom = "0px";
-            }
+            inputContainer.style.transform = "translateY(0)";
         }
+    }
 
-        lastHeight = currentHeight;
-
-    });
+    window.visualViewport.addEventListener("resize", updatePosition);
+    window.visualViewport.addEventListener("scroll", updatePosition);
 }
 
-handleViewport();
+handleKeyboard();
+
+/* 🔥 تحسين تجربة الكتابة */
+
+input.addEventListener("input", () => {
+    // تفعيل زر الإرسال
+    if (input.innerText.trim().length > 0) {
+        sendBtn.classList.add("active");
+    } else {
+        sendBtn.classList.remove("active");
+    }
+});
+
+/* 🔥 منع مشاكل التركيز */
+
+input.addEventListener("focus", () => {
+    setTimeout(scrollDown, 300);
+});

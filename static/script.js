@@ -33,3 +33,27 @@ function sendMessage() {
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+/* 🔥 تثبيت الهيدر + الايقونة مع الكيبورد */
+
+function fixUIOnKeyboard() {
+
+    if (!window.visualViewport) return;
+
+    const header = document.querySelector(".header");
+    const input = document.querySelector(".input-container");
+
+    function update() {
+        const offsetTop = window.visualViewport.offsetTop;
+
+        // 🔥 تثبيت الهيدر
+        header.style.transform = `translateY(${offsetTop}px)`;
+
+        // 🔥 تثبيت الايقونة
+        input.style.transform = `translateY(${offsetTop}px)`;
+    }
+
+    window.visualViewport.addEventListener("resize", update);
+    window.visualViewport.addEventListener("scroll", update);
+}
+
+fixUIOnKeyboard();

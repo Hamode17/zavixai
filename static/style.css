@@ -20,10 +20,10 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (ثابت بدون تغيير الشكل) */
+/* 🔥 HEADER (ثابت عالمي) */
 
 .header {
-    position: fixed; /* 🔥 التعديل */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -39,7 +39,10 @@ html, body {
 
     direction: ltr;
 
-    z-index: 1000; /* 🔥 التعديل */
+    z-index: 9999;
+
+    /* 🔥 يمنع اختفاءه في iPhone */
+    transform: translateZ(0);
 }
 
 /* العناصر الداخلية */
@@ -126,13 +129,12 @@ html, body {
     transform: rotate(45deg);
 }
 
-/* 💬 CHAT */
+/* 💬 CHAT (يمر تحت الهيدر والأيقونة بدون اختفاء) */
 
 .chat-box {
-    position: absolute; /* 🔥 التعديل */
-    top: 60px;          /* 🔥 التعديل */
-    bottom: 80px;       /* 🔥 التعديل */
-
+    position: absolute;
+    top: 60px;
+    bottom: 80px;
     left: 0;
     right: 0;
 
@@ -145,6 +147,9 @@ html, body {
 
     display: flex;
     flex-direction: column;
+
+    /* 🔥 مهم جدًا */
+    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -168,10 +173,10 @@ html, body {
     max-width: 70%;
 }
 
-/* 🧠 INPUT */
+/* 🧠 INPUT (ثابت عالمي مثل ChatGPT) */
 
 .input-container {
-    position: fixed; /* 🔥 التعديل */
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -179,7 +184,10 @@ html, body {
     padding: 10px;
     background: #f7f7f8;
 
-    z-index: 1000; /* 🔥 التعديل */
+    z-index: 9999;
+
+    /* 🔥 يمنع الاختفاء في iPhone */
+    transform: translateZ(0);
 }
 
 /* الصندوق */

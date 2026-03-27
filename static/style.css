@@ -230,3 +230,19 @@ body.locked {
     background: black;
     color: white;
 }
+/* 🔥 منع تحريك الصفحة بالكامل */
+body.locked {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* 🔥 السماح بالسحب فقط داخل الشات */
+.chat-box {
+    touch-action: pan-y;
+}
+
+/* 🔥 منع سحب أي شيء خارج الشات */
+body.locked *:not(.chat-box) {
+    touch-action: none;
+}

@@ -33,9 +33,9 @@ function sendMessage() {
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-/* 🔥 تثبيت الهيدر + الايقونة مع الكيبورد */
+/* 🔥 تثبيت الهيدر + رفع الأيقونة مع الكيبورد */
 
-function fixUIOnKeyboard() {
+function fixUI() {
 
     if (!window.visualViewport) return;
 
@@ -43,17 +43,25 @@ function fixUIOnKeyboard() {
     const input = document.querySelector(".input-container");
 
     function update() {
-        const offsetTop = window.visualViewport.offsetTop;
 
-        // 🔥 تثبيت الهيدر
+        const viewport = window.visualViewport;
+
+        const offsetTop = viewport.offsetTop;
+        const keyboardHeight = window.innerHeight - viewport.height;
+
+        // ✅ تثبيت الهيدر (لا يختفي)
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // 🔥 تثبيت الايقونة
-        input.style.transform = `translateY(${offsetTop}px)`;
+        // ✅ رفع الأيقونة فوق الكيبورد
+        if (keyboardHeight > 100) {
+            input.style.transform = `translateY(-${keyboardHeight - offsetTop}px)`;
+        } else {
+            input.style.transform = `translateY(0px)`;
+        }
     }
 
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
 }
 
-fixUIOnKeyboard();
+fixUI();

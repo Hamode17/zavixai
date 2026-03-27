@@ -70,8 +70,20 @@ function fixUI() {
         }
 
         // 🟢 تثبيت الهيدر
-        // ❌ لا نحرك الهيدر نهائياً
+        // 🔥 تثبيت الهيدر عند أول لمس (يمنع الرجفة)
+
+        const header = document.querySelector(".header");
+
+        let locked = false;
+
+        document.addEventListener("touchstart", () => {
+        if (locked) return;
+
         header.style.transform = "translateY(0)";
+        header.style.willChange = "auto";
+
+        locked = true;
+      }, { passive: true });
         // 🟢 رفع الانبوت فقط عند الكيبورد
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;

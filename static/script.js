@@ -34,7 +34,7 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 نظام احترافي عالمي (بدون تخريب الزوم) */
+/* 🔥 نظام احترافي عالمي (بدون تخريب الزوم + بدون اهتزاز) */
 
 function fixUI() {
 
@@ -42,6 +42,8 @@ function fixUI() {
 
     const header = document.querySelector(".header");
     const inputContainer = document.querySelector(".input-container");
+
+    let isFirstRun = true; // 🔥 منع اهتزاز أول مرة
 
     function update() {
 
@@ -51,17 +53,23 @@ function fixUI() {
         const keyboardHeight = window.innerHeight - viewport.height;
         const isZoomed = viewport.scale > 1;
 
-        // 🟡 في حالة الزوم → لا نتدخل (المتصفح يتحكم)
+        // 🔥 تجاهل أول تنفيذ لتجنب الاهتزاز
+        if (isFirstRun) {
+            isFirstRun = false;
+            return;
+        }
+
+        // 🟡 في حالة الزوم → لا نتدخل
         if (isZoomed) {
             header.style.transform = "translateY(0)";
             inputContainer.style.transform = "translateY(0)";
             return;
         }
 
-        // 🟢 تثبيت الهيدر دائمًا
+        // 🟢 تثبيت الهيدر
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // 🟢 رفع الأيقونة فقط عند الكيبورد
+        // 🟢 رفع الأيقونة عند الكيبورد فقط
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
@@ -72,8 +80,8 @@ function fixUI() {
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
 
-    // تشغيل أول مرة
-    update();
+    // تشغيل بدون اهتزاز
+    setTimeout(update, 50);
 }
 
 fixUI();

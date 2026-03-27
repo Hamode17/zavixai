@@ -40,9 +40,9 @@ html, body {
 
     direction: ltr;
     z-index: 9999;
-
-    /* ❌ حذف هذا السطر لأنه سبب الرجفة */
-    /* transform: translateZ(0); */
+will-change: transform;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
 }
 
 /* يسار الهيدر */

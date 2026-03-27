@@ -34,7 +34,7 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 نظام احترافي عالمي (بدون تخريب الزوم + بدون اهتزاز) */
+/* 🔥 FIX نهائي بدون أي اهتزاز */
 
 function fixUI() {
 
@@ -43,23 +43,26 @@ function fixUI() {
     const header = document.querySelector(".header");
     const inputContainer = document.querySelector(".input-container");
 
-    let isFirstRun = true; // 🔥 منع اهتزاز أول مرة
+    let lastOffsetTop = 0;
+    let lastKeyboard = 0;
 
     function update() {
 
         const viewport = window.visualViewport;
 
-        const offsetTop = viewport.offsetTop;
-        const keyboardHeight = window.innerHeight - viewport.height;
+        const offsetTop = Math.round(viewport.offsetTop);
+        const keyboardHeight = Math.round(window.innerHeight - viewport.height);
         const isZoomed = viewport.scale > 1;
 
-        // 🔥 تجاهل أول تنفيذ لتجنب الاهتزاز
-        if (isFirstRun) {
-            isFirstRun = false;
+        // 🛑 إذا ماكو تغيير → لا تسوي شي (هذا يمنع الرجفة)
+        if (offsetTop === lastOffsetTop && keyboardHeight === lastKeyboard) {
             return;
         }
 
-        // 🟡 في حالة الزوم → لا نتدخل
+        lastOffsetTop = offsetTop;
+        lastKeyboard = keyboardHeight;
+
+        // 🟡 في حالة الزوم
         if (isZoomed) {
             header.style.transform = "translateY(0)";
             inputContainer.style.transform = "translateY(0)";
@@ -69,7 +72,7 @@ function fixUI() {
         // 🟢 تثبيت الهيدر
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // 🟢 رفع الأيقونة عند الكيبورد فقط
+        // 🟢 رفع الانبوت فقط عند الكيبورد
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
@@ -80,8 +83,8 @@ function fixUI() {
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
 
-    // تشغيل بدون اهتزاز
-    setTimeout(update, 50);
+    // تشغيل أولي
+    requestAnimationFrame(update);
 }
 
 fixUI();

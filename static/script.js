@@ -33,14 +33,15 @@ function sendMessage() {
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-/* 🔥 تثبيت الهيدر + رفع الأيقونة مع الكيبورد */
+
+/* 🔥 الحل النهائي (كيبورد + زوم بدون تضارب) */
 
 function fixUI() {
 
     if (!window.visualViewport) return;
 
     const header = document.querySelector(".header");
-    const input = document.querySelector(".input-container");
+    const inputContainer = document.querySelector(".input-container");
 
     function update() {
 
@@ -48,15 +49,25 @@ function fixUI() {
 
         const offsetTop = viewport.offsetTop;
         const keyboardHeight = window.innerHeight - viewport.height;
+        const isZoomed = viewport.scale > 1;
 
-        // ✅ تثبيت الهيدر (لا يختفي)
+        // 🟡 وضع الزوم → خلي المتصفح يتحكم
+        if (isZoomed) {
+            header.style.transform = "none";
+            inputContainer.style.transform = "none";
+            return;
+        }
+
+        // 🟢 الوضع الطبيعي
+
+        // تثبيت الهيدر
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // ✅ رفع الأيقونة فوق الكيبورد
+        // رفع الأيقونة فوق الكيبورد
         if (keyboardHeight > 100) {
-            input.style.transform = `translateY(-${keyboardHeight - offsetTop}px)`;
+            inputContainer.style.transform = `translateY(-${keyboardHeight - offsetTop}px)`;
         } else {
-            input.style.transform = `translateY(0px)`;
+            inputContainer.style.transform = `translateY(0px)`;
         }
     }
 

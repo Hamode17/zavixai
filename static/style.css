@@ -16,12 +16,14 @@ html, body {
 .app {
     position: fixed;
     inset: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 🔥 HEADER (ثابت) */
+/* 🔥 HEADER (ثابت بدون تغيير الشكل) */
 
 .header {
-    position: fixed; /* 🔥 الجديد */
+    position: fixed; /* 🔥 التعديل */
     top: 0;
     left: 0;
     right: 0;
@@ -36,7 +38,8 @@ html, body {
     border-bottom: 1px solid #e5e5e5;
 
     direction: ltr;
-    z-index: 1000; /* 🔥 مهم */
+
+    z-index: 1000; /* 🔥 التعديل */
 }
 
 /* العناصر الداخلية */
@@ -123,12 +126,12 @@ html, body {
     transform: rotate(45deg);
 }
 
-/* 💬 CHAT (يمر بين الهيدر والايقونة) */
+/* 💬 CHAT */
 
 .chat-box {
-    position: absolute; /* 🔥 الجديد */
-    top: 60px;          /* 🔥 تحت الهيدر */
-    bottom: 80px;       /* 🔥 فوق الايقونة */
+    position: absolute; /* 🔥 التعديل */
+    top: 60px;          /* 🔥 التعديل */
+    bottom: 80px;       /* 🔥 التعديل */
 
     left: 0;
     right: 0;
@@ -165,10 +168,10 @@ html, body {
     max-width: 70%;
 }
 
-/* 🧠 INPUT (ثابت) */
+/* 🧠 INPUT */
 
 .input-container {
-    position: fixed; /* 🔥 الجديد */
+    position: fixed; /* 🔥 التعديل */
     bottom: 0;
     left: 0;
     right: 0;
@@ -176,7 +179,7 @@ html, body {
     padding: 10px;
     background: #f7f7f8;
 
-    z-index: 1000; /* 🔥 مهم */
+    z-index: 1000; /* 🔥 التعديل */
 }
 
 /* الصندوق */

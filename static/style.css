@@ -33,7 +33,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 14px; /* 🔥 ضبط دقيق مثل ChatGPT */
+    padding: 0 14px;
 
     background: #ffffff;
     border-bottom: 1px solid #eaeaea;
@@ -41,7 +41,8 @@ html, body {
     direction: ltr;
     z-index: 9999;
 
-    transform: translateZ(0);
+    /* ❌ حذف هذا السطر لأنه سبب الرجفة */
+    /* transform: translateZ(0); */
 }
 
 /* يسار الهيدر */
@@ -66,7 +67,7 @@ html, body {
     gap: 4px;
     cursor: pointer;
 
-    margin-right: 10px; /* 🔥 يبعد عن الاسم */
+    margin-right: 10px;
 }
 
 .menu-icon span {
@@ -93,7 +94,7 @@ html, body {
     color: #111;
     margin: 0;
 
-    margin-right: 6px; /* 🔥 مسافة خفيفة مثل ChatGPT */
+    margin-right: 6px;
 }
 
 /* ⭐ الاشتراك */
@@ -110,10 +111,10 @@ html, body {
     font-size: 13px;
     color: #5b5bd6;
 
-    margin-right: 8px; /* 🔥 قربناه للاسم */
+    margin-right: 8px;
 }
 
-/* 🔥 الرسالة المؤقتة (ثابت أقصى اليمين) */
+/* 🔥 الرسالة المؤقتة */
 
 .temp-msg-btn {
     width: 16px;
@@ -128,7 +129,7 @@ html, body {
     opacity: 0.8;
     transition: 0.2s;
 
-    margin-left: 2px; /* 🔥 لصقه بالحافة */
+    margin-left: 2px;
 }
 
 .temp-msg-btn:hover {
@@ -275,8 +276,8 @@ html, body {
     background: black;
 }
 
-/* 🔥 iPhone fix */
-
+/* ❌ حذف هذا لأنه يسبب رجفة على iPhone */
+/*
 @supports (-webkit-touch-callout: none) {
     .header,
     .input-container {
@@ -284,3 +285,4 @@ html, body {
         -webkit-backface-visibility: hidden;
     }
 }
+*/

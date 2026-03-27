@@ -76,3 +76,23 @@ function handleViewport() {
 }
 
 handleViewport();
+/* 🔥 التحكم بين الزوم والوضع العادي */
+
+function handleZoomBehavior() {
+    if (!window.visualViewport) return;
+
+    window.visualViewport.addEventListener("resize", () => {
+        const scale = window.visualViewport.scale;
+
+        if (scale > 1) {
+            document.body.classList.remove("locked");
+        } else {
+            document.body.classList.add("locked");
+        }
+    });
+}
+
+/* 🔥 تشغيل القفل أول مرة */
+document.body.classList.add("locked");
+
+handleZoomBehavior();

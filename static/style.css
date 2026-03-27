@@ -40,9 +40,13 @@ html, body {
 
     direction: ltr;
     z-index: 9999;
-will-change: transform;
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;
+
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    /* ✅ التعديل المهم */
+    transform: translateZ(0);
 }
 
 /* يسار الهيدر */
@@ -275,14 +279,3 @@ backface-visibility: hidden;
 .send.active {
     background: black;
 }
-
-/* ❌ حذف هذا لأنه يسبب رجفة على iPhone */
-/*
-@supports (-webkit-touch-callout: none) {
-    .header,
-    .input-container {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-    }
-}
-*/

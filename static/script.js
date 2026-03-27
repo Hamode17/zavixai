@@ -29,14 +29,12 @@ function sendMessage() {
 
     scrollDown();
 
-    // 🔥 مهم جدًا للموبايل
     setTimeout(scrollDown, 150);
 }
 
-/* 🔥 FIX عرض الرسائل مع الكيبورد */
+/* 🔥 نزول الشات دائمًا */
 
 function scrollDown() {
-
     chatBox.scrollTop = chatBox.scrollHeight;
 
     setTimeout(() => {
@@ -48,7 +46,7 @@ function scrollDown() {
     });
 }
 
-/* 🔥 FIX بدون اهتزاز + بدون تخريب */
+/* 🔥 الحل النهائي (هيدر ثابت 100%) */
 
 function fixUI() {
 
@@ -57,7 +55,14 @@ function fixUI() {
     const header = document.querySelector(".header");
     const inputContainer = document.querySelector(".input-container");
 
-    let lastKeyboard = 0;
+    let lastKeyboard = -1;
+
+    // ✅ تثبيت الهيدر مرة واحدة فقط (مهم جدًا)
+    header.style.transform = "translateY(0)";
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.right = "0";
 
     function update() {
 
@@ -72,19 +77,18 @@ function fixUI() {
             return;
         }
 
-        // 🛑 منع التكرار (يوقف الرجفة)
+        // 🛑 منع الرجفة
         if (keyboardHeight === lastKeyboard) return;
 
         lastKeyboard = keyboardHeight;
 
-        // 🟢 نحرك الانبوت فقط (الهيدر ثابت)
+        // ✅ نحرك الانبوت فقط
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
             inputContainer.style.transform = "translateY(0)";
         }
 
-        // 🔥 بعد الحركة ننزل الشات
         setTimeout(scrollDown, 100);
     }
 

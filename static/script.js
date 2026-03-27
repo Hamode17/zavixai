@@ -70,8 +70,8 @@ function fixUI() {
         }
 
         // 🟢 تثبيت الهيدر
-        header.style.transform = `translateY(${offsetTop}px)`;
-
+        // ❌ لا نحرك الهيدر نهائياً
+        header.style.transform = "translateY(0)";
         // 🟢 رفع الانبوت فقط عند الكيبورد
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;

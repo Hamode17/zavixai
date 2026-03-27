@@ -9,9 +9,6 @@ html, body {
     direction: rtl;
 
     overflow: hidden;
-
-    /* 🔥 مهم للآيفون */
-    height: -webkit-fill-available;
 }
 
 /* 📦 التطبيق */
@@ -23,7 +20,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER */
+/* 🔥 HEADER (ثابت عالمي + Responsive احترافي) */
 
 .header {
     position: fixed;
@@ -35,7 +32,7 @@ html, body {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* 🔥 مهم */
 
     padding: 0 10px;
     background: white;
@@ -44,15 +41,18 @@ html, body {
     direction: ltr;
 
     z-index: 9999;
+
+    transform: translateZ(0);
 }
 
-/* العناصر */
+/* العناصر الداخلية */
 
 .header-left {
     display: flex;
     align-items: center;
     gap: 6px;
-    min-width: 0;
+
+    min-width: 0; /* 🔥 يمنع كسر العناصر */
 }
 
 /* ☰ */
@@ -87,13 +87,14 @@ html, body {
     font-size: 16px;
     color: #2d2d2d;
     font-weight: 500;
+    letter-spacing: 0.3px;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* ⭐ */
+/* ⭐ الاشتراك */
 
 .plus-badge {
     background: #f1f0ff;
@@ -105,27 +106,49 @@ html, body {
     white-space: nowrap;
 }
 
-/* زر */
+/* 🔥 زر الرسائل */
 
 .temp-msg-btn {
     width: 15px;
     height: 15px;
+
     border: 2px dashed #555;
     border-radius: 50%;
-    margin-left: auto;
+
+    margin-left: auto; /* 🔥 يدفعه لليمين */
+
     position: relative;
+    cursor: pointer;
 }
 
 .temp-msg-btn::after {
     content: "";
     position: absolute;
+
     bottom: -4px;
     left: 4px;
+
     width: 7px;
     height: 7px;
+
     border-left: 2px dashed #555;
     border-bottom: 2px dashed #555;
+
     transform: rotate(45deg);
+}
+
+/* 📱 موبايلات صغيرة */
+
+@media (max-width: 380px) {
+
+    .plus-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .header h3 {
+        font-size: 14px;
+    }
 }
 
 /* 💬 CHAT */
@@ -138,11 +161,16 @@ html, body {
     right: 0;
 
     overflow-y: auto;
+
     -webkit-overflow-scrolling: touch;
 
-    padding: 10px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
+
+    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -178,6 +206,8 @@ html, body {
     background: #f7f7f8;
 
     z-index: 9999;
+
+    transform: translateZ(0);
 }
 
 /* الصندوق */

@@ -44,12 +44,20 @@ html, body {
     transform: translateZ(0);
 }
 
-/* العناصر */
+/* يسار الهيدر */
 
 .header-left {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+/* يمين الهيدر */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* ☰ */
@@ -81,7 +89,7 @@ html, body {
     margin: 0;
 }
 
-/* ⭐ */
+/* ⭐ الاشتراك */
 
 .plus-badge {
     background: #f4f3ff;
@@ -89,6 +97,42 @@ html, body {
     border-radius: 999px;
     font-size: 13px;
     color: #5b5bd6;
+}
+
+/* 🔥 الرسالة المؤقتة */
+
+.temp-msg-btn {
+    width: 16px;
+    height: 16px;
+
+    border: 2px dashed #999;
+    border-radius: 50%;
+
+    position: relative;
+    cursor: pointer;
+
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.temp-msg-btn:hover {
+    opacity: 1;
+}
+
+.temp-msg-btn::after {
+    content: "";
+    position: absolute;
+
+    bottom: -4px;
+    left: 5px;
+
+    width: 6px;
+    height: 6px;
+
+    border-left: 2px dashed #999;
+    border-bottom: 2px dashed #999;
+
+    transform: rotate(45deg);
 }
 
 /* 💬 CHAT */
@@ -150,7 +194,6 @@ html, body {
 
     z-index: 9999;
 
-    /* 🔥 يمنع أي حركة */
     transform: none !important;
 }
 

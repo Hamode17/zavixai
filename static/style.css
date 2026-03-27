@@ -19,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (احترافي) */
+/* 🔥 HEADER */
 
 .header {
     position: fixed;
@@ -33,21 +33,23 @@ html, body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 16px; /* 🔥 مسافة صح */
+    padding: 0 16px;
 
     background: #ffffff;
     border-bottom: 1px solid #eaeaea;
 
     direction: ltr;
     z-index: 9999;
+
+    transform: translateZ(0);
 }
 
-/* المحتوى */
+/* العناصر */
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 10px; /* 🔥 مهم */
+    gap: 10px;
 }
 
 /* ☰ */
@@ -79,7 +81,7 @@ html, body {
     margin: 0;
 }
 
-/* ⭐ الاشتراك */
+/* ⭐ */
 
 .plus-badge {
     background: #f4f3ff;
@@ -87,13 +89,6 @@ html, body {
     border-radius: 999px;
     font-size: 13px;
     color: #5b5bd6;
-    margin-left: 6px;
-}
-
-/* زر مؤقت */
-
-.temp-msg-btn {
-    margin-left: auto;
 }
 
 /* 💬 CHAT */
@@ -101,7 +96,7 @@ html, body {
 .chat-box {
     position: absolute;
     top: 60px;
-    bottom: 90px;
+    bottom: 80px;
 
     left: 0;
     right: 0;
@@ -109,11 +104,14 @@ html, body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    padding: 20px 16px; /* 🔥 مسافة مريحة */
+    padding: 16px;
+    padding-bottom: 20px;
 
     display: flex;
     flex-direction: column;
-    gap: 12px; /* 🔥 أهم شي */
+    gap: 12px;
+
+    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -141,21 +139,26 @@ html, body {
 
 .input-container {
     position: fixed;
-    bottom: env(safe-area-inset-bottom);
     left: 0;
     right: 0;
+
+    bottom: 0;
+    bottom: env(safe-area-inset-bottom);
 
     padding: 10px 12px;
     background: #f7f7f8;
 
     z-index: 9999;
+
+    /* 🔥 يمنع أي حركة */
+    transform: none !important;
 }
 
 /* الصندوق */
 
 .input-box {
     width: 100%;
-    max-width: 800px; /* 🔥 مهم للابتوب */
+    max-width: 800px;
     margin: auto;
 
     background: white;
@@ -207,4 +210,18 @@ html, body {
 .send {
     background: #111;
     color: white;
+}
+
+.send.active {
+    background: black;
+}
+
+/* 🔥 iPhone fix */
+
+@supports (-webkit-touch-callout: none) {
+    .header,
+    .input-container {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
 }

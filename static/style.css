@@ -7,7 +7,6 @@ html, body {
     font-family: Arial;
     background: #f7f7f8;
     direction: rtl;
-
     overflow: hidden;
 }
 
@@ -20,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (ثابت عالمي + Responsive احترافي) */
+/* 🔥 HEADER */
 
 .header {
     position: fixed;
@@ -51,7 +50,6 @@ html, body {
     display: flex;
     align-items: center;
     gap: 6px;
-
     min-width: 0;
 }
 
@@ -102,7 +100,6 @@ html, body {
     border-radius: 20px;
     font-size: 13px;
     color: #6c63ff;
-
     white-space: nowrap;
 }
 
@@ -156,7 +153,8 @@ html, body {
 .chat-box {
     position: absolute;
     top: 60px;
-    bottom: 80px;
+    bottom: 90px; /* 🔥 زودنا شوي حتى ما يصعد */
+
     left: 0;
     right: 0;
 
@@ -193,20 +191,23 @@ html, body {
     max-width: 70%;
 }
 
-/* 🧠 INPUT */
+/* 🧠 INPUT (🔥 التثبيت الحقيقي) */
 
 .input-container {
     position: fixed;
-    bottom: 0;
     left: 0;
     right: 0;
+
+    bottom: 0;
+    bottom: env(safe-area-inset-bottom); /* 🔥 مهم للآيفون */
 
     padding: 10px;
     background: #f7f7f8;
 
     z-index: 9999;
 
-    transform: translateZ(0);
+    /* 🔥 أهم شي */
+    transform: none !important;
 }
 
 /* الصندوق */
@@ -268,14 +269,12 @@ html, body {
     color: white;
 }
 
-
-/* 🔥🔥🔥 الحل الوحيد للـ iPhone بدون تخريب التصميم */
+/* 🔥 iPhone fix بدون تخريب */
 
 @supports (-webkit-touch-callout: none) {
 
     .header,
     .input-container {
-        will-change: transform;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }

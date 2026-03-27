@@ -8,8 +8,16 @@ html, body {
     background: #f7f7f8;
     direction: rtl;
 
-    /* 🔥 مهم: السماح للزوم والسحب */
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 🔥 وضع القفل (بدون زوم) */
+
+body.locked {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 /* 🔥 HEADER */
@@ -115,17 +123,21 @@ html, body {
     transform: rotate(45deg);
 }
 
-/* 💬 CHAT */
+/* 💬 CHAT (🔥 الشات فقط يتحرك) */
 
 .chat-box {
-    height: calc(100dvh - 120px);
-    overflow-y: auto;
+    position: absolute;
+    top: 60px;
+    bottom: 80px;
+    left: 0;
+    right: 0;
 
-    overscroll-behavior: contain;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    padding: 65px 12px 70px;
+    padding: 10px 12px;
     box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
 }
@@ -151,7 +163,7 @@ html, body {
     max-width: 70%;
 }
 
-/* 🧠 INPUT */
+/* 🧠 INPUT (ثابت مثل ChatGPT) */
 
 .input-container {
     position: fixed;
@@ -162,7 +174,6 @@ html, body {
     background: #f7f7f8;
     z-index: 9999;
 
-    /* 🔥 مهم: السماح للمتصفح بالتحكم */
     touch-action: auto;
 }
 

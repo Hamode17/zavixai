@@ -18,7 +18,6 @@ function sendMessage() {
     const text = input.innerText.trim();
     if (!text) return;
 
-    // رسالة المستخدم
     const userMsg = document.createElement("div");
     userMsg.className = "user-msg";
     userMsg.innerText = text;
@@ -26,7 +25,6 @@ function sendMessage() {
 
     input.innerText = "";
 
-    // رد وهمي
     const botMsg = document.createElement("div");
     botMsg.className = "bot-msg";
     botMsg.innerText = "جاري التفكير...";
@@ -41,58 +39,45 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 نظام ChatGPT الحقيقي */
+/* 🔥 النظام النهائي (بدون تضارب) */
 
-function handleViewport() {
+function setupViewportSystem() {
+    if (!window.visualViewport) return;
 
     let lastHeight = window.innerHeight;
 
-    if (!window.visualViewport) return;
-
     window.visualViewport.addEventListener("resize", () => {
 
-        const currentHeight = window.visualViewport.height;
-        const keyboardHeight = window.innerHeight - currentHeight;
-        const isZoomed = window.visualViewport.scale > 1;
+        const viewport = window.visualViewport;
+        const keyboardHeight = window.innerHeight - viewport.height;
+        const isZoomed = viewport.scale > 1;
 
         if (isZoomed) {
-            // 🟡 وضع الزوم → المتصفح يتحكم
+            // 🔵 وضع الزوم (المتصفح يتحكم)
+            document.body.classList.remove("locked");
+
             inputContainer.style.position = "absolute";
             inputContainer.style.bottom = "0px";
+
         } else {
-            // 🟢 الوضع الطبيعي → تثبيت + كيبورد
+            // 🟢 الوضع الطبيعي (تثبيت كامل)
+            document.body.classList.add("locked");
+
             inputContainer.style.position = "fixed";
 
-            if (keyboardHeight > 120 && currentHeight < lastHeight) {
+            if (keyboardHeight > 120 && viewport.height < lastHeight) {
                 inputContainer.style.bottom = keyboardHeight + "px";
-            } else if (keyboardHeight < 50) {
+            } else {
                 inputContainer.style.bottom = "0px";
             }
         }
 
-        lastHeight = currentHeight;
+        lastHeight = viewport.height;
 
     });
+
+    // 🔥 تشغيل القفل أول مرة
+    document.body.classList.add("locked");
 }
 
-handleViewport();
-/* 🔥 التحكم بين الزوم والوضع العادي */
-
-function handleZoomBehavior() {
-    if (!window.visualViewport) return;
-
-    window.visualViewport.addEventListener("resize", () => {
-        const scale = window.visualViewport.scale;
-
-        if (scale > 1) {
-            document.body.classList.remove("locked");
-        } else {
-            document.body.classList.add("locked");
-        }
-    });
-}
-
-/* 🔥 تشغيل القفل أول مرة */
-document.body.classList.add("locked");
-
-handleZoomBehavior();
+setupViewportSystem();

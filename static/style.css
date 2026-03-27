@@ -9,9 +9,6 @@ html, body {
     direction: rtl;
 
     overflow: hidden;
-
-    /* 🔥 المستوى الأعلى (منع أي سحب خارجي) */
-    overscroll-behavior: none;
 }
 
 /* 📦 التطبيق */
@@ -23,7 +20,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER */
+/* 🔥 HEADER (من كودك القديم بدون تغيير الشكل) */
 
 .header {
     height: 60px;
@@ -37,10 +34,9 @@ html, body {
     border-bottom: 1px solid #e5e5e5;
 
     direction: ltr;
-    z-index: 1000;
 }
 
-/* العناصر */
+/* العناصر الداخلية */
 
 .header-left {
     display: flex;
@@ -137,9 +133,6 @@ html, body {
 
     display: flex;
     flex-direction: column;
-
-    /* 🔥 منع اختفاء الواجهة نهائيًا */
-    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -169,7 +162,6 @@ html, body {
     flex-shrink: 0;
     padding: 10px;
     background: #f7f7f8;
-    z-index: 1000;
 }
 
 /* الصندوق */

@@ -34,7 +34,7 @@ function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 الحل النهائي (كيبورد + زوم بدون تضارب) */
+/* 🔥 نظام احترافي عالمي (بدون تخريب الزوم) */
 
 function fixUI() {
 
@@ -51,28 +51,29 @@ function fixUI() {
         const keyboardHeight = window.innerHeight - viewport.height;
         const isZoomed = viewport.scale > 1;
 
-        // 🟡 وضع الزوم → خلي المتصفح يتحكم
+        // 🟡 في حالة الزوم → لا نتدخل (المتصفح يتحكم)
         if (isZoomed) {
-            header.style.transform = "none";
-            inputContainer.style.transform = "none";
+            header.style.transform = "translateY(0)";
+            inputContainer.style.transform = "translateY(0)";
             return;
         }
 
-        // 🟢 الوضع الطبيعي
-
-        // تثبيت الهيدر
+        // 🟢 تثبيت الهيدر دائمًا
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // رفع الأيقونة فوق الكيبورد
-        if (keyboardHeight > 100) {
-            inputContainer.style.transform = `translateY(-${keyboardHeight - offsetTop}px)`;
+        // 🟢 رفع الأيقونة فقط عند الكيبورد
+        if (keyboardHeight > 120) {
+            inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
-            inputContainer.style.transform = `translateY(0px)`;
+            inputContainer.style.transform = "translateY(0)";
         }
     }
 
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
+
+    // تشغيل أول مرة
+    update();
 }
 
 fixUI();

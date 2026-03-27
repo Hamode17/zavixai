@@ -28,13 +28,27 @@ function sendMessage() {
     chatBox.appendChild(botMsg);
 
     scrollDown();
+
+    // 🔥 مهم جدًا للموبايل
+    setTimeout(scrollDown, 150);
 }
+
+/* 🔥 FIX عرض الرسائل مع الكيبورد */
 
 function scrollDown() {
+
     chatBox.scrollTop = chatBox.scrollHeight;
+
+    setTimeout(() => {
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 100);
+
+    requestAnimationFrame(() => {
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
 }
 
-/* 🔥 FIX نهائي بدون أي اهتزاز */
+/* 🔥 FIX بدون اهتزاز + بدون تخريب */
 
 function fixUI() {
 
@@ -43,46 +57,40 @@ function fixUI() {
     const header = document.querySelector(".header");
     const inputContainer = document.querySelector(".input-container");
 
-    let lastOffsetTop = 0;
     let lastKeyboard = 0;
 
     function update() {
 
         const viewport = window.visualViewport;
 
-        const offsetTop = Math.round(viewport.offsetTop);
         const keyboardHeight = Math.round(window.innerHeight - viewport.height);
         const isZoomed = viewport.scale > 1;
 
-        // 🛑 إذا ماكو تغيير → لا تسوي شي (هذا يمنع الرجفة)
-        if (offsetTop === lastOffsetTop && keyboardHeight === lastKeyboard) {
-            return;
-        }
-
-        lastOffsetTop = offsetTop;
-        lastKeyboard = keyboardHeight;
-
         // 🟡 في حالة الزوم
         if (isZoomed) {
-            header.style.transform = "translateY(0)";
             inputContainer.style.transform = "translateY(0)";
             return;
         }
 
-        // 🟢 تثبيت الهيدر
-        header.style.transform = `translateY(${offsetTop}px)`;
-        // 🟢 رفع الانبوت فقط عند الكيبورد
+        // 🛑 منع التكرار (يوقف الرجفة)
+        if (keyboardHeight === lastKeyboard) return;
+
+        lastKeyboard = keyboardHeight;
+
+        // 🟢 نحرك الانبوت فقط (الهيدر ثابت)
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
             inputContainer.style.transform = "translateY(0)";
         }
+
+        // 🔥 بعد الحركة ننزل الشات
+        setTimeout(scrollDown, 100);
     }
 
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
 
-    // تشغيل أولي
     requestAnimationFrame(update);
 }
 

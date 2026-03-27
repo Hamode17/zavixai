@@ -16,17 +16,16 @@ html, body {
 .app {
     position: fixed;
     inset: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 🔥 HEADER */
+/* 🔥 HEADER (من كودك القديم بدون تغيير الشكل) */
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
     height: 60px;
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
 
@@ -35,21 +34,98 @@ html, body {
     border-bottom: 1px solid #e5e5e5;
 
     direction: ltr;
-    z-index: 9999; /* 🔥 مهم جدًا */
+}
+
+/* العناصر الداخلية */
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* ☰ */
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+    position: relative;
+    left: 5px;
+
+    transform: translateY(-3px);
+}
+
+.menu-icon span {
+    width: 21px;
+    height: 2px;
+    background: #555;
+    border-radius: 999px;
+}
+
+.menu-icon span:last-child {
+    width: 14px;
+}
+
+/* الاسم */
+
+.header h3 {
+    margin: 16px;
+    font-size: 18px;
+    color: #2d2d2d;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* ⭐ الاشتراك */
+
+.plus-badge {
+    background: #f1f0ff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 17px;
+    color: #6c63ff;
+    margin-left: 10px;
+}
+
+/* 🔥 زر الرسائل */
+
+.temp-msg-btn {
+    width: 15px;
+    height: 15px;
+
+    border: 2px dashed #555;
+    border-radius: 50%;
+
+    margin-left: 35px;
+
+    position: relative;
+    cursor: pointer;
+}
+
+.temp-msg-btn::after {
+    content: "";
+    position: absolute;
+
+    bottom: -4px;
+    left: 4px;
+
+    width: 7px;
+    height: 7px;
+
+    border-left: 2px dashed #555;
+    border-bottom: 2px dashed #555;
+
+    transform: rotate(45deg);
 }
 
 /* 💬 CHAT */
 
 .chat-box {
-    position: absolute;
-
-    top: 60px; /* 🔥 تحت الهيدر */
-    bottom: 70px; /* 🔥 فوق input */
-
-    left: 0;
-    right: 0;
-
+    flex: 1;
     overflow-y: auto;
+
     -webkit-overflow-scrolling: touch;
 
     padding: 10px 12px;
@@ -57,8 +133,6 @@ html, body {
 
     display: flex;
     flex-direction: column;
-
-    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -85,18 +159,9 @@ html, body {
 /* 🧠 INPUT */
 
 .input-container {
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    height: 70px;
-
+    flex-shrink: 0;
     padding: 10px;
     background: #f7f7f8;
-
-    z-index: 9999; /* 🔥 فوق كل شيء */
 }
 
 /* الصندوق */

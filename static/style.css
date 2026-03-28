@@ -19,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (مطابق ChatGPT فعلياً) */
+/* 🔥 HEADER (نسخة ChatGPT حقيقية) */
 
 .header {
     position: fixed;
@@ -31,6 +31,7 @@ html, body {
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     padding: 0 16px;
 
@@ -39,26 +40,32 @@ html, body {
 
     direction: ltr;
     z-index: 9999;
-
-    transform: translateZ(0);
 }
 
-/* يسار (يمتد مثل ChatGPT) */
+/* يسار */
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 6px;
-
-    flex: 1; /* 🔥 هذا السر */
 }
 
-/* يمين (ثابت) */
+/* 🔥 الوسط (السر الحقيقي) */
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 🔥 مسافة ChatGPT */
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* 🔥 تمركز حقيقي */
+}
+
+/* يمين */
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 6px;
 }
 
 /* ☰ */
@@ -68,8 +75,6 @@ html, body {
     flex-direction: column;
     gap: 3px;
     cursor: pointer;
-
-    margin-right: 4px;
 }
 
 .menu-icon span {
@@ -88,7 +93,7 @@ html, body {
 .title-wrapper {
     display: flex;
     align-items: center;
-    gap: 3px; /* 🔥 تقليل المسافة */
+    gap: 4px;
 }
 
 .header h3 {
@@ -101,8 +106,8 @@ html, body {
 /* 🔽 السهم */
 
 .dropdown-icon {
-    font-size: 11px;
-    color: #888;
+    font-size: 12px;
+    color: #777;
     margin-top: 2px;
 }
 
@@ -111,18 +116,14 @@ html, body {
 .plus-badge {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 
     background: #f4f3ff;
-    padding: 6px 10px; /* 🔥 أصغر مثل ChatGPT */
+    padding: 6px 12px;
     border-radius: 999px;
 
     font-size: 13px;
     color: #5b5bd6;
-}
-
-.plus-icon {
-    font-size: 13px;
 }
 
 /* 🔥 الرسالة المؤقتة */
@@ -138,11 +139,6 @@ html, body {
     cursor: pointer;
 
     opacity: 0.8;
-    transition: 0.2s;
-}
-
-.temp-msg-btn:hover {
-    opacity: 1;
 }
 
 .temp-msg-btn::after {
@@ -180,8 +176,6 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-
-    overscroll-behavior: contain;
 }
 
 /* الرسائل */
@@ -211,16 +205,12 @@ html, body {
     position: fixed;
     left: 0;
     right: 0;
-
-    bottom: 0;
     bottom: env(safe-area-inset-bottom);
 
     padding: 10px 12px;
     background: #f7f7f8;
 
     z-index: 9999;
-
-    transform: none !important;
 }
 
 /* الصندوق */
@@ -255,8 +245,6 @@ html, body {
     font-size: 15px;
 }
 
-/* placeholder */
-
 .editable-input:empty:before {
     content: attr(data-placeholder);
     color: #999;
@@ -288,24 +276,4 @@ html, body {
     font-size: 16px;
 
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-
-    transition: 0.15s ease;
-}
-
-.send:active {
-    transform: scale(0.95);
-}
-
-.send.active {
-    background: black;
-}
-
-/* 🔥 iPhone fix */
-
-@supports (-webkit-touch-callout: none) {
-    .header,
-    .input-container {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-    }
 }

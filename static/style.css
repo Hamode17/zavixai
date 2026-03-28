@@ -49,7 +49,7 @@ html, body {
     align-items: center;
 }
 
-/* 🔥 الوسط (السر الحقيقي) */
+/* 🔥 الوسط */
 
 .header-center {
     display: flex;
@@ -88,12 +88,14 @@ html, body {
     width: 12px;
 }
 
-/* الاسم */
+/* 🔥🔥🔥 تعديل الاسم فقط */
 
 .title-wrapper {
     display: flex;
     align-items: center;
     gap: 4px;
+
+    white-space: nowrap; /* 🔥 يمنع نزول السطر */
 }
 
 .header h3 {
@@ -101,6 +103,8 @@ html, body {
     font-weight: 600;
     color: #111;
     margin: 0;
+
+    white-space: nowrap; /* 🔥 أهم سطر */
 }
 
 /* 🔽 السهم */
@@ -111,7 +115,7 @@ html, body {
     margin-top: 2px;
 }
 
-/* 🔥🔥🔥 زر Plus (تم التعديل فقط هنا) */
+/* 🔥 زر Plus */
 
 .plus-badge {
     display: flex;
@@ -119,25 +123,21 @@ html, body {
     gap: 6px;
 
     background: #f4f3ff;
-    padding: 6px 14px; /* 🔥 أعرض قليلاً */
+    padding: 6px 14px;
     border-radius: 999px;
 
-    font-size: 13.5px; /* 🔥 أوضح */
+    font-size: 13.5px;
     color: #5b5bd6;
 
     line-height: 1;
-    white-space: nowrap; /* 🔥 يمنع النزول */
+    white-space: nowrap;
 }
-
-/* أيقونة ✨ */
 
 .plus-icon {
     font-size: 14px;
     display: flex;
     align-items: center;
 }
-
-/* النص */
 
 .plus-text {
     display: flex;
@@ -146,13 +146,9 @@ html, body {
     white-space: nowrap;
 }
 
-/* Plus */
-
 .plus-text .en {
     font-weight: 600;
 }
-
-/* عربي */
 
 .plus-text .ar {
     font-weight: 500;
@@ -211,8 +207,6 @@ html, body {
     gap: 12px;
 }
 
-/* الرسائل */
-
 .user-msg {
     align-self: flex-end;
     background: #111;
@@ -246,8 +240,6 @@ html, body {
     z-index: 9999;
 }
 
-/* الصندوق */
-
 .input-box {
     width: calc(100% - 24px);
     max-width: 800px;
@@ -265,8 +257,6 @@ html, body {
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-/* input */
-
 .editable-input {
     flex: 1;
     min-height: 20px;
@@ -282,8 +272,6 @@ html, body {
     content: attr(data-placeholder);
     color: #999;
 }
-
-/* الأزرار */
 
 .plus-btn {
     width: 36px;

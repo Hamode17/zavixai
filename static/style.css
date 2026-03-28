@@ -175,8 +175,10 @@ html, body {
     transform: none !important;
 }
 
+/* 🔥🔥🔥 هنا التعديل المهم */
+
 .input-box {
-    width: 100%;
+    width: calc(100% - 24px); /* 🔥 يبعد عن الحواف */
     max-width: 800px;
     margin: auto;
 
@@ -187,7 +189,7 @@ html, body {
     align-items: center;
     gap: 10px;
 
-    padding: 8px 12px;
+    padding: 8px 14px; /* 🔥 توازن داخلي */
 
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
@@ -217,8 +219,6 @@ html, body {
     border: none;
     background: #f1f1f1;
 }
-
-/* 🔥🔥🔥 زر الإرسال مثل ChatGPT */
 
 .send {
     width: 40px;

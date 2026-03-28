@@ -1,6 +1,36 @@
+/* العناصر الأساسية */
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
+
+/* 🔥 عناصر السايدبار */
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+const openSidebar = document.getElementById("openSidebar");
+const closeSidebar = document.getElementById("closeSidebar");
+const chatHistory = document.getElementById("chatHistory");
+const newChatBtn = document.getElementById("newChat");
+
+/* ========================= */
+/* 🔥 فتح واغلاق القائمة */
+/* ========================= */
+
+openSidebar.onclick = () => {
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+};
+
+closeSidebar.onclick = closeMenu;
+overlay.onclick = closeMenu;
+
+function closeMenu() {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+}
+
+/* ========================= */
+/* 💬 ارسال رسالة */
+/* ========================= */
 
 sendBtn.onclick = sendMessage;
 
@@ -15,26 +45,88 @@ function sendMessage() {
     const text = input.innerText.trim();
     if (!text) return;
 
-    const userMsg = document.createElement("div");
-    userMsg.className = "user-msg";
-    userMsg.innerText = text;
-    chatBox.appendChild(userMsg);
+    addMessage("user-msg", text);
 
     input.innerText = "";
 
-    const botMsg = document.createElement("div");
-    botMsg.className = "bot-msg";
-    botMsg.innerText = "جاري التفكير...";
-    chatBox.appendChild(botMsg);
+    addMessage("bot-msg", "جاري التفكير...");
+
+    saveChat(text); // 🔥 حفظ الدردشة
 
     scrollDown();
 }
+
+/* ========================= */
+/* 🔥 اضافة رسالة */
+/* ========================= */
+
+function addMessage(type, text) {
+    const msg = document.createElement("div");
+    msg.className = type;
+    msg.innerText = text;
+    chatBox.appendChild(msg);
+}
+
+/* ========================= */
+/* 🔥 حفظ الدردشات */
+/* ========================= */
+
+function saveChat(text) {
+    let chats = JSON.parse(localStorage.getItem("zavix_chats")) || [];
+
+    chats.unshift(text); // نحفظ اخر رسالة
+
+    localStorage.setItem("zavix_chats", JSON.stringify(chats));
+
+    renderChats();
+}
+
+/* ========================= */
+/* 🔥 عرض الدردشات */
+/* ========================= */
+
+function renderChats() {
+    chatHistory.innerHTML = "";
+
+    let chats = JSON.parse(localStorage.getItem("zavix_chats")) || [];
+
+    chats.forEach(chat => {
+        const item = document.createElement("div");
+        item.className = "chat-item";
+        item.innerText = chat;
+
+        item.onclick = () => {
+            chatBox.innerHTML = "";
+            addMessage("user-msg", chat);
+            addMessage("bot-msg", "جاري التفكير...");
+            closeMenu();
+        };
+
+        chatHistory.appendChild(item);
+    });
+}
+
+/* ========================= */
+/* 🔥 دردشة جديدة */
+/* ========================= */
+
+newChatBtn.onclick = () => {
+    chatBox.innerHTML = "";
+    addMessage("bot-msg", "👋 مرحباً! كيف أساعدك؟");
+    closeMenu();
+};
+
+/* ========================= */
+/* 🔥 Scroll */
+/* ========================= */
 
 function scrollDown() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/* 🔥 نظام احترافي عالمي (بدون تخريب الزوم) */
+/* ========================= */
+/* 🔥 نظام تثبيت احترافي */
+/* ========================= */
 
 function fixUI() {
 
@@ -51,17 +143,14 @@ function fixUI() {
         const keyboardHeight = window.innerHeight - viewport.height;
         const isZoomed = viewport.scale > 1;
 
-        // 🟡 في حالة الزوم → لا نتدخل (المتصفح يتحكم)
         if (isZoomed) {
             header.style.transform = "translateY(0)";
             inputContainer.style.transform = "translateY(0)";
             return;
         }
 
-        // 🟢 تثبيت الهيدر دائمًا
         header.style.transform = `translateY(${offsetTop}px)`;
 
-        // 🟢 رفع الأيقونة فقط عند الكيبورد
         if (keyboardHeight > 120) {
             inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
         } else {
@@ -72,8 +161,10 @@ function fixUI() {
     window.visualViewport.addEventListener("resize", update);
     window.visualViewport.addEventListener("scroll", update);
 
-    // تشغيل أول مرة
     update();
 }
 
 fixUI();
+
+/* تشغيل عند فتح الصفحة */
+renderChats();

@@ -39,10 +39,10 @@ html, body {
     border-bottom: 1px solid #f0f0f0;
 
     direction: ltr;
-    z-index: 9999;
 
-    transform: translateZ(0); /* 🔥 يمنع الاهتزاز */
-    will-change: transform;   /* 🔥 تثبيت أقوى */
+    z-index: 10000; /* 🔥 أعلى من كل شيء */
+
+    transform: translateZ(0);
 }
 
 /* يسار */
@@ -52,7 +52,7 @@ html, body {
     align-items: center;
 }
 
-/* 🔥 الوسط */
+/* الوسط */
 
 .header-center {
     display: flex;
@@ -69,6 +69,7 @@ html, body {
 .header-right {
     display: flex;
     align-items: center;
+    gap: 6px;
 }
 
 /* ☰ */
@@ -129,7 +130,7 @@ html, body {
     color: #5b5bd6;
 }
 
-/* 🔥 الأيقونة (تثبيت كامل) */
+/* 🔥 الأيقونة (ثابتة فعلياً) */
 
 .temp-msg-btn {
     width: 18px;
@@ -143,16 +144,14 @@ html, body {
 
     opacity: 0.8;
 
-    transform: translateZ(0); /* 🔥 يمنع الحركة */
-    will-change: transform;
+    transform: translateZ(0);
 }
 
-/* السهم الصغير */
+/* السهم */
 
 .temp-msg-btn::after {
     content: "";
     position: absolute;
-
     bottom: -4px;
     left: 6px;
 
@@ -169,8 +168,8 @@ html, body {
 
 .chat-box {
     position: absolute;
-    top: 60px;
-    bottom: 80px;
+    top: 56px; /* 🔥 نفس ارتفاع الهيدر */
+    bottom: 70px; /* 🔥 أقل حتى لا يصعد */
 
     left: 0;
     right: 0;
@@ -207,18 +206,21 @@ html, body {
     font-size: 14px;
 }
 
-/* INPUT */
+/* 🔥 INPUT (الحل النهائي هنا) */
 
 .input-container {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: env(safe-area-inset-bottom);
 
+    bottom: 0; /* 🔥 أهم تعديل */
     padding: 10px 12px;
+
     background: #f7f7f8;
 
-    z-index: 9999;
+    z-index: 9998; /* 🔥 أقل من الهيدر */
+
+    transform: none !important;
 }
 
 /* الصندوق */

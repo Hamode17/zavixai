@@ -1,68 +1,83 @@
-<!DOCTYPE html>  <html lang="ar">  
-<head>  
-<meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">  <title>Zavix AI</title>  <link rel="stylesheet" href="/static/style.css">  </head>  <body>  <div class="app">  <!-- HEADER -->  
-<div class="header">  
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
 
-    <!-- يسار -->  
-    <div class="header-left">  
-        <div class="menu-icon">  
-            <span></span>  
-            <span></span>  
-        </div>  
-    </div>  
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <!-- 🔥 الوسط -->  
-    <div class="header-center">  
+<title>Zavix AI</title>
 
-        <div class="title-wrapper">  
-            <h3>Zavix AI</h3>  
-            <span class="dropdown-icon">▾</span>  
-        </div>  
+<link rel="stylesheet" href="/static/style.css">
 
-        <!-- 🔥 زر الاشتراك (مطور) -->  
-        <div class="plus-badge">  
-            <span class="plus-icon">✨</span>  
-            <span class="plus-text">  
-                <span class="en">Plus</span>  
-                <span class="ar">اشتراك في</span>  
-            </span>  
-        </div>  
+</head>
 
-    </div>  
+<body>
 
-    <!-- يمين -->  
-    <div class="header-right">  
-        <div class="temp-msg-btn"></div>  
-    </div>  
+<div class="app">
 
-</div>  
+    <!-- HEADER -->
+    <div class="header">
 
-<!-- CHAT -->  
-<div class="chat-box" id="chatBox">  
-    <div class="bot-msg">👋 مرحباً! كيف أساعدك؟</div>  
-</div>  
+        <!-- يسار (القائمة فقط) -->
+        <div class="header-left">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
 
-<!-- INPUT -->  
-<div class="input-container">  
-    <div class="input-box">  
+        <!-- 🔥 الوسط (مثل ChatGPT بالضبط) -->
+        <div class="header-center">
 
-        <button class="plus-btn">+</button>  
+            <div class="title-wrapper">
+                <h3>Zavix AI</h3>
+                <span class="dropdown-icon">▾</span>
+            </div>
 
-        <div   
-            id="userInput"   
-            contenteditable="true"  
-            class="editable-input"  
-            data-placeholder="اسأل Zavix AI أي شيء..."  
-            autocapitalize="off"  
-            autocomplete="off"  
-            autocorrect="off"  
-            spellcheck="false"  
-        ></div>  
+            <div class="plus-badge">
+                <span class="plus-icon">✨</span>
+                <span>Plus</span>
+            </div>
 
-        <button id="sendBtn" class="send">↑</button>  
+        </div>
 
-    </div>  
+        <!-- يمين -->
+        <div class="header-right">
+            <div class="temp-msg-btn"></div>
+        </div>
+
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-box" id="chatBox">
+        <div class="bot-msg">👋 مرحباً! كيف أساعدك؟</div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-container">
+        <div class="input-box">
+
+            <button class="plus-btn">+</button>
+
+            <div 
+                id="userInput" 
+                contenteditable="true"
+                class="editable-input"
+                data-placeholder="اسأل Zavix AI أي شيء..."
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                spellcheck="false"
+            ></div>
+
+            <button id="sendBtn" class="send">↑</button>
+
+        </div>
+    </div>
+
 </div>
 
-</div>  <script src="/static/script.js"></script>  </body>  
-</html>  
+<script src="/static/script.js"></script>
+
+</body>
+</html>

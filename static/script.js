@@ -5,78 +5,75 @@ const chatBox = document.getElementById("chatBox");
 sendBtn.onclick = sendMessage;
 
 input.addEventListener("keydown", function(e) {
-if (e.key === "Enter") {
-e.preventDefault();
-sendMessage();
-}
+    if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+    }
 });
 
 function sendMessage() {
-const text = input.innerText.trim();
-if (!text) return;
+    const text = input.innerText.trim();
+    if (!text) return;
 
-const userMsg = document.createElement("div");  
-userMsg.className = "user-msg";  
-userMsg.innerText = text;  
-chatBox.appendChild(userMsg);  
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-msg";
+    userMsg.innerText = text;
+    chatBox.appendChild(userMsg);
 
-input.innerText = "";  
+    input.innerText = "";
 
-const botMsg = document.createElement("div");  
-botMsg.className = "bot-msg";  
-botMsg.innerText = "جاري التفكير...";  
-chatBox.appendChild(botMsg);  
+    const botMsg = document.createElement("div");
+    botMsg.className = "bot-msg";
+    botMsg.innerText = "جاري التفكير...";
+    chatBox.appendChild(botMsg);
 
-scrollDown();
-
+    scrollDown();
 }
 
 function scrollDown() {
-chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 /* 🔥 نظام احترافي عالمي (بدون تخريب الزوم) */
 
 function fixUI() {
 
-if (!window.visualViewport) return;  
+    if (!window.visualViewport) return;
 
-const header = document.querySelector(".header");  
-const inputContainer = document.querySelector(".input-container");  
+    const header = document.querySelector(".header");
+    const inputContainer = document.querySelector(".input-container");
 
-function update() {  
+    function update() {
 
-    const viewport = window.visualViewport;  
+        const viewport = window.visualViewport;
 
-    const offsetTop = viewport.offsetTop;  
-    const keyboardHeight = window.innerHeight - viewport.height;  
-    const isZoomed = viewport.scale > 1;  
+        const offsetTop = viewport.offsetTop;
+        const keyboardHeight = window.innerHeight - viewport.height;
+        const isZoomed = viewport.scale > 1;
 
-    // 🟡 في حالة الزوم → لا نتدخل (المتصفح يتحكم)  
-    if (isZoomed) {  
-        header.style.transform = "translateY(0)";  
-        inputContainer.style.transform = "translateY(0)";  
-        return;  
-    }  
+        // 🟡 في حالة الزوم → لا نتدخل (المتصفح يتحكم)
+        if (isZoomed) {
+            header.style.transform = "translateY(0)";
+            inputContainer.style.transform = "translateY(0)";
+            return;
+        }
 
-    // 🟢 تثبيت الهيدر دائمًا  
-    header.style.transform = `translateY(${offsetTop}px)`;  
+        // 🟢 تثبيت الهيدر دائمًا
+        header.style.transform = `translateY(${offsetTop}px)`;
 
-    // 🟢 رفع الأيقونة فقط عند الكيبورد  
-    if (keyboardHeight > 120) {  
-        inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;  
-    } else {  
-        inputContainer.style.transform = "translateY(0)";  
-    }  
-}  
+        // 🟢 رفع الأيقونة فقط عند الكيبورد
+        if (keyboardHeight > 120) {
+            inputContainer.style.transform = `translateY(-${keyboardHeight}px)`;
+        } else {
+            inputContainer.style.transform = "translateY(0)";
+        }
+    }
 
-window.visualViewport.addEventListener("resize", update);  
-window.visualViewport.addEventListener("scroll", update);  
+    window.visualViewport.addEventListener("resize", update);
+    window.visualViewport.addEventListener("scroll", update);
 
-// تشغيل أول مرة  
-update();
-
+    // تشغيل أول مرة
+    update();
 }
 
 fixUI();
-اوكي هدا JS قم بالتعديل من دون أي تضارب وارسل لي الكود بالكامل وقل لي أيهما اثبث اولا

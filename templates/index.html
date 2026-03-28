@@ -9,6 +9,12 @@
 
 <link rel="stylesheet" href="/static/style.css">
 
+<!-- 🔥 مكتبة كشف اللغة (عالمية) -->
+<script type="module">
+    import { franc } from "https://cdn.jsdelivr.net/npm/franc@6/+esm";
+    window.franc = franc;
+</script>
+
 </head>
 
 <body>
@@ -34,7 +40,7 @@
                 <span class="dropdown-icon">▾</span>
             </div>
 
-            <!-- 🔥 زر الاشتراك (مطور) -->
+            <!-- 🔥 زر الاشتراك (بدون كسر نص) -->
             <div class="plus-badge">
                 <span class="plus-icon">✨</span>
                 <span class="plus-text">
@@ -72,6 +78,7 @@
                 autocomplete="off"
                 autocorrect="off"
                 spellcheck="false"
+                dir="auto"  <!-- 🔥 أهم سطر لدعم كل اللغات -->
             ></div>
 
             <button id="sendBtn" class="send">↑</button>

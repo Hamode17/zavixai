@@ -54,11 +54,11 @@ html, body {
 .header-center {
     display: flex;
     align-items: center;
-    gap: 8px; /* 🔥 مسافة ChatGPT */
+    gap: 8px;
 
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* 🔥 تمركز حقيقي */
+    transform: translateX(-50%);
 }
 
 /* يمين */
@@ -111,7 +111,7 @@ html, body {
     margin-top: 2px;
 }
 
-/* ⭐ Plus */
+/* 🔥🔥🔥 زر Plus (تم التعديل فقط هنا) */
 
 .plus-badge {
     display: flex;
@@ -119,11 +119,44 @@ html, body {
     gap: 6px;
 
     background: #f4f3ff;
-    padding: 6px 12px;
+    padding: 6px 14px; /* 🔥 أعرض قليلاً */
     border-radius: 999px;
 
-    font-size: 13px;
+    font-size: 13.5px; /* 🔥 أوضح */
     color: #5b5bd6;
+
+    line-height: 1;
+    white-space: nowrap; /* 🔥 يمنع النزول */
+}
+
+/* أيقونة ✨ */
+
+.plus-icon {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+/* النص */
+
+.plus-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+/* Plus */
+
+.plus-text .en {
+    font-weight: 600;
+}
+
+/* عربي */
+
+.plus-text .ar {
+    font-weight: 500;
+    opacity: 0.95;
 }
 
 /* 🔥 الرسالة المؤقتة */

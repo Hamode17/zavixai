@@ -19,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (نسخة ChatGPT حقيقية) */
+/* 🔥 HEADER (ثابت 100%) */
 
 .header {
     position: fixed;
@@ -40,6 +40,9 @@ html, body {
 
     direction: ltr;
     z-index: 9999;
+
+    transform: translateZ(0); /* 🔥 يمنع الاهتزاز */
+    will-change: transform;   /* 🔥 تثبيت أقوى */
 }
 
 /* يسار */
@@ -49,16 +52,16 @@ html, body {
     align-items: center;
 }
 
-/* 🔥 الوسط (السر الحقيقي) */
+/* 🔥 الوسط */
 
 .header-center {
     display: flex;
     align-items: center;
-    gap: 8px; /* 🔥 مسافة ChatGPT */
+    gap: 8px;
 
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* 🔥 تمركز حقيقي */
+    transform: translateX(-50%);
 }
 
 /* يمين */
@@ -103,7 +106,7 @@ html, body {
     margin: 0;
 }
 
-/* 🔽 السهم */
+/* السهم */
 
 .dropdown-icon {
     font-size: 12px;
@@ -111,7 +114,7 @@ html, body {
     margin-top: 2px;
 }
 
-/* ⭐ Plus */
+/* Plus */
 
 .plus-badge {
     display: flex;
@@ -126,7 +129,7 @@ html, body {
     color: #5b5bd6;
 }
 
-/* 🔥 الرسالة المؤقتة */
+/* 🔥 الأيقونة (تثبيت كامل) */
 
 .temp-msg-btn {
     width: 18px;
@@ -139,7 +142,12 @@ html, body {
     cursor: pointer;
 
     opacity: 0.8;
+
+    transform: translateZ(0); /* 🔥 يمنع الحركة */
+    will-change: transform;
 }
+
+/* السهم الصغير */
 
 .temp-msg-btn::after {
     content: "";
@@ -199,7 +207,7 @@ html, body {
     font-size: 14px;
 }
 
-/* 🧠 INPUT */
+/* INPUT */
 
 .input-container {
     position: fixed;
@@ -245,6 +253,8 @@ html, body {
     font-size: 15px;
 }
 
+/* placeholder */
+
 .editable-input:empty:before {
     content: attr(data-placeholder);
     color: #999;
@@ -272,8 +282,4 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 16px;
-
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }

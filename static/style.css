@@ -54,7 +54,7 @@ html, body {
 .header-center {
     display: flex;
     align-items: center;
-    gap: 6px; /* 🔥 أقرب لـ ChatGPT */
+    gap: 6px;
 
     position: absolute;
     left: 50%;
@@ -88,12 +88,13 @@ html, body {
     width: 12px;
 }
 
-/* الاسم */
+/* 🔥 الاسم (حل المشكلة هنا) */
 
 .title-wrapper {
     display: flex;
     align-items: center;
     gap: 3px;
+    white-space: nowrap; /* 🔥 يمنع النزول */
 }
 
 .header h3 {
@@ -101,6 +102,7 @@ html, body {
     font-weight: 600;
     color: #111;
     margin: 0;
+    white-space: nowrap; /* 🔥 يمنع Zavix AI ينكسر */
 }
 
 /* السهم */
@@ -111,7 +113,7 @@ html, body {
     margin-top: 2px;
 }
 
-/* 🔥🔥🔥 زر Plus (نسخة ChatGPT حقيقية) */
+/* 🔥 زر Plus (حل كامل) */
 
 .plus-badge {
     display: flex;
@@ -119,13 +121,14 @@ html, body {
     gap: 5px;
 
     background: #f4f3ff;
-    padding: 5px 10px; /* 🔥 أهم تعديل */
+    padding: 5px 10px;
     border-radius: 999px;
 
-    font-size: 12.5px; /* 🔥 حجم أدق */
+    font-size: 12.5px;
     color: #5b5bd6;
 
     line-height: 1;
+    white-space: nowrap; /* 🔥 يمنع النزول */
 }
 
 /* أيقونة ✨ */
@@ -142,12 +145,14 @@ html, body {
     display: flex;
     align-items: center;
     gap: 4px;
+    white-space: nowrap; /* 🔥 مهم جداً */
 }
 
 /* Plus */
 
 .plus-text .en {
     font-weight: 600;
+    direction: ltr;
 }
 
 /* عربي */
@@ -155,6 +160,7 @@ html, body {
 .plus-text .ar {
     opacity: 0.9;
     font-weight: 500;
+    direction: rtl;
 }
 
 /* 🔥 الرسالة المؤقتة */

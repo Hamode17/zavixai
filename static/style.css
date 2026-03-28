@@ -19,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER (نسخة ChatGPT حقيقية) */
+/* 🔥 HEADER */
 
 .header {
     position: fixed;
@@ -49,16 +49,16 @@ html, body {
     align-items: center;
 }
 
-/* 🔥 الوسط (السر الحقيقي) */
+/* الوسط */
 
 .header-center {
     display: flex;
     align-items: center;
-    gap: 8px; /* 🔥 مسافة ChatGPT */
+    gap: 6px; /* 🔥 أقرب لـ ChatGPT */
 
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* 🔥 تمركز حقيقي */
+    transform: translateX(-50%);
 }
 
 /* يمين */
@@ -93,7 +93,7 @@ html, body {
 .title-wrapper {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
 }
 
 .header h3 {
@@ -103,27 +103,58 @@ html, body {
     margin: 0;
 }
 
-/* 🔽 السهم */
+/* السهم */
 
 .dropdown-icon {
-    font-size: 12px;
+    font-size: 11px;
     color: #777;
     margin-top: 2px;
 }
 
-/* ⭐ Plus */
+/* 🔥🔥🔥 زر Plus (نسخة ChatGPT حقيقية) */
 
 .plus-badge {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 
     background: #f4f3ff;
-    padding: 6px 12px;
+    padding: 5px 10px; /* 🔥 أهم تعديل */
     border-radius: 999px;
 
-    font-size: 13px;
+    font-size: 12.5px; /* 🔥 حجم أدق */
     color: #5b5bd6;
+
+    line-height: 1;
+}
+
+/* أيقونة ✨ */
+
+.plus-icon {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+/* النص */
+
+.plus-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Plus */
+
+.plus-text .en {
+    font-weight: 600;
+}
+
+/* عربي */
+
+.plus-text .ar {
+    opacity: 0.9;
+    font-weight: 500;
 }
 
 /* 🔥 الرسالة المؤقتة */
@@ -144,7 +175,6 @@ html, body {
 .temp-msg-btn::after {
     content: "";
     position: absolute;
-
     bottom: -4px;
     left: 6px;
 
@@ -199,7 +229,7 @@ html, body {
     font-size: 14px;
 }
 
-/* 🧠 INPUT */
+/* INPUT */
 
 .input-container {
     position: fixed;
@@ -244,6 +274,8 @@ html, body {
     border: none;
     font-size: 15px;
 }
+
+/* placeholder */
 
 .editable-input:empty:before {
     content: attr(data-placeholder);

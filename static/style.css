@@ -19,7 +19,7 @@ html, body {
     flex-direction: column;
 }
 
-/* 🔥 HEADER */
+/* 🔥 HEADER (مطابق ChatGPT) */
 
 .header {
     position: fixed;
@@ -27,16 +27,16 @@ html, body {
     left: 0;
     right: 0;
 
-    height: 60px;
+    height: 56px; /* 🔥 نفس ChatGPT */
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 14px;
+    padding: 0 16px; /* 🔥 مسافة دقيقة */
 
     background: #ffffff;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #f0f0f0;
 
     direction: ltr;
     z-index: 9999;
@@ -44,64 +44,102 @@ html, body {
     transform: translateZ(0);
 }
 
+/* يسار */
+
 .header-left {
     display: flex;
     align-items: center;
+    gap: 8px; /* 🔥 أهم فرق */
 }
+
+/* يمين */
 
 .header-right {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
+
+/* ☰ */
 
 .menu-icon {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     cursor: pointer;
-    margin-right: 10px;
+
+    margin-right: 2px; /* 🔥 ضبط دقيق */
 }
 
 .menu-icon span {
-    width: 20px;
+    width: 18px;
     height: 2px;
-    background: #444;
+    background: #555;
     border-radius: 10px;
 }
 
 .menu-icon span:last-child {
-    width: 14px;
+    width: 12px;
+}
+
+/* الاسم */
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .header h3 {
-    font-size: 16px;
+    font-size: 15px; /* 🔥 أقرب للواقع */
     font-weight: 600;
     color: #111;
     margin: 0;
-    margin-right: 6px;
 }
 
+/* 🔽 السهم */
+
+.dropdown-icon {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* ⭐ Plus */
+
 .plus-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
     background: #f4f3ff;
     padding: 6px 12px;
     border-radius: 999px;
+
     font-size: 13px;
     color: #5b5bd6;
-    margin-right: 8px;
+
+    margin-right: 2px;
+}
+
+.plus-icon {
+    font-size: 14px;
 }
 
 /* 🔥 الرسالة المؤقتة */
 
 .temp-msg-btn {
-    width: 16px;
-    height: 16px;
-    border: 2px dashed #999;
+    width: 18px;
+    height: 18px;
+
+    border: 2px dashed #bbb;
     border-radius: 50%;
+
     position: relative;
     cursor: pointer;
+
     opacity: 0.8;
     transition: 0.2s;
-    margin-left: 2px;
 }
 
 .temp-msg-btn:hover {
@@ -111,12 +149,16 @@ html, body {
 .temp-msg-btn::after {
     content: "";
     position: absolute;
+
     bottom: -4px;
-    left: 5px;
+    left: 6px;
+
     width: 6px;
     height: 6px;
-    border-left: 2px dashed #999;
-    border-bottom: 2px dashed #999;
+
+    border-left: 2px dashed #bbb;
+    border-bottom: 2px dashed #bbb;
+
     transform: rotate(45deg);
 }
 
@@ -126,6 +168,7 @@ html, body {
     position: absolute;
     top: 60px;
     bottom: 80px;
+
     left: 0;
     right: 0;
 
@@ -141,6 +184,8 @@ html, body {
 
     overscroll-behavior: contain;
 }
+
+/* الرسائل */
 
 .user-msg {
     align-self: flex-end;
@@ -167,18 +212,22 @@ html, body {
     position: fixed;
     left: 0;
     right: 0;
+
     bottom: 0;
     bottom: env(safe-area-inset-bottom);
+
     padding: 10px 12px;
     background: #f7f7f8;
+
     z-index: 9999;
+
     transform: none !important;
 }
 
-/* 🔥🔥🔥 هنا التعديل المهم */
+/* الصندوق */
 
 .input-box {
-    width: calc(100% - 24px); /* 🔥 يبعد عن الحواف */
+    width: calc(100% - 24px);
     max-width: 800px;
     margin: auto;
 
@@ -189,10 +238,12 @@ html, body {
     align-items: center;
     gap: 10px;
 
-    padding: 8px 14px; /* 🔥 توازن داخلي */
+    padding: 8px 14px;
 
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
+
+/* input */
 
 .editable-input {
     flex: 1;
@@ -204,6 +255,8 @@ html, body {
     border: none;
     font-size: 15px;
 }
+
+/* placeholder */
 
 .editable-input:empty:before {
     content: attr(data-placeholder);

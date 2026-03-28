@@ -33,7 +33,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 14px;
+    padding: 0 14px; /* 🔥 ضبط دقيق مثل ChatGPT */
 
     background: #ffffff;
     border-bottom: 1px solid #eaeaea;
@@ -41,11 +41,6 @@ html, body {
     direction: ltr;
     z-index: 9999;
 
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-
-    /* ✅ التعديل المهم */
     transform: translateZ(0);
 }
 
@@ -71,7 +66,7 @@ html, body {
     gap: 4px;
     cursor: pointer;
 
-    margin-right: 10px;
+    margin-right: 10px; /* 🔥 يبعد عن الاسم */
 }
 
 .menu-icon span {
@@ -98,7 +93,7 @@ html, body {
     color: #111;
     margin: 0;
 
-    margin-right: 6px;
+    margin-right: 6px; /* 🔥 مسافة خفيفة مثل ChatGPT */
 }
 
 /* ⭐ الاشتراك */
@@ -115,10 +110,10 @@ html, body {
     font-size: 13px;
     color: #5b5bd6;
 
-    margin-right: 8px;
+    margin-right: 8px; /* 🔥 قربناه للاسم */
 }
 
-/* 🔥 الرسالة المؤقتة */
+/* 🔥 الرسالة المؤقتة (ثابت أقصى اليمين) */
 
 .temp-msg-btn {
     width: 16px;
@@ -133,7 +128,7 @@ html, body {
     opacity: 0.8;
     transition: 0.2s;
 
-    margin-left: 2px;
+    margin-left: 2px; /* 🔥 لصقه بالحافة */
 }
 
 .temp-msg-btn:hover {
@@ -278,4 +273,14 @@ html, body {
 
 .send.active {
     background: black;
+}
+
+/* 🔥 iPhone fix */
+
+@supports (-webkit-touch-callout: none) {
+    .header,
+    .input-container {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
 }

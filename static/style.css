@@ -33,7 +33,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 14px; /* 🔥 ضبط دقيق مثل ChatGPT */
+    padding: 0 14px;
 
     background: #ffffff;
     border-bottom: 1px solid #eaeaea;
@@ -44,29 +44,22 @@ html, body {
     transform: translateZ(0);
 }
 
-/* يسار الهيدر */
-
 .header-left {
     display: flex;
     align-items: center;
 }
-
-/* يمين الهيدر */
 
 .header-right {
     display: flex;
     align-items: center;
 }
 
-/* ☰ */
-
 .menu-icon {
     display: flex;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
-
-    margin-right: 10px; /* 🔥 يبعد عن الاسم */
+    margin-right: 10px;
 }
 
 .menu-icon span {
@@ -80,27 +73,12 @@ html, body {
     width: 14px;
 }
 
-/* الاسم */
-
-.title-wrapper {
-    display: flex;
-    align-items: center;
-}
-
 .header h3 {
     font-size: 16px;
     font-weight: 600;
     color: #111;
     margin: 0;
-
-    margin-right: 6px; /* 🔥 مسافة خفيفة مثل ChatGPT */
-}
-
-/* ⭐ الاشتراك */
-
-.plus-wrapper {
-    display: flex;
-    align-items: center;
+    margin-right: 6px;
 }
 
 .plus-badge {
@@ -109,26 +87,21 @@ html, body {
     border-radius: 999px;
     font-size: 13px;
     color: #5b5bd6;
-
-    margin-right: 8px; /* 🔥 قربناه للاسم */
+    margin-right: 8px;
 }
 
-/* 🔥 الرسالة المؤقتة (ثابت أقصى اليمين) */
+/* 🔥 الرسالة المؤقتة */
 
 .temp-msg-btn {
     width: 16px;
     height: 16px;
-
     border: 2px dashed #999;
     border-radius: 50%;
-
     position: relative;
     cursor: pointer;
-
     opacity: 0.8;
     transition: 0.2s;
-
-    margin-left: 2px; /* 🔥 لصقه بالحافة */
+    margin-left: 2px;
 }
 
 .temp-msg-btn:hover {
@@ -138,16 +111,12 @@ html, body {
 .temp-msg-btn::after {
     content: "";
     position: absolute;
-
     bottom: -4px;
     left: 5px;
-
     width: 6px;
     height: 6px;
-
     border-left: 2px dashed #999;
     border-bottom: 2px dashed #999;
-
     transform: rotate(45deg);
 }
 
@@ -157,7 +126,6 @@ html, body {
     position: absolute;
     top: 60px;
     bottom: 80px;
-
     left: 0;
     right: 0;
 
@@ -173,8 +141,6 @@ html, body {
 
     overscroll-behavior: contain;
 }
-
-/* الرسائل */
 
 .user-msg {
     align-self: flex-end;
@@ -201,19 +167,13 @@ html, body {
     position: fixed;
     left: 0;
     right: 0;
-
     bottom: 0;
     bottom: env(safe-area-inset-bottom);
-
     padding: 10px 12px;
     background: #f7f7f8;
-
     z-index: 9999;
-
     transform: none !important;
 }
-
-/* الصندوق */
 
 .input-box {
     width: 100%;
@@ -232,8 +192,6 @@ html, body {
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-/* input */
-
 .editable-input {
     flex: 1;
     min-height: 20px;
@@ -245,8 +203,6 @@ html, body {
     font-size: 15px;
 }
 
-/* placeholder */
-
 .editable-input:empty:before {
     content: attr(data-placeholder);
     color: #999;
@@ -254,21 +210,38 @@ html, body {
 
 /* الأزرار */
 
-.plus-btn,
-.send {
+.plus-btn {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     border: none;
-}
-
-.plus-btn {
     background: #f1f1f1;
 }
 
+/* 🔥🔥🔥 زر الإرسال مثل ChatGPT */
+
 .send {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+
     background: #111;
     color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+    transition: 0.15s ease;
+}
+
+.send:active {
+    transform: scale(0.95);
 }
 
 .send.active {
